@@ -13,7 +13,7 @@
     </header>
 
     <footer>
-        © <?= date("Y") ?> - Mon Portfolio
+        © <?= date("d/m/Y") ?> - Mon Portfolio
     </footer>
     <?php
     $compteur = "visites.txt";
