@@ -59,6 +59,11 @@ body{
   }
 }*/
 
-footer .echo{
+.footer .echo{
     color: white;
+}
+
+p{
+  font-size : 20px;
+  
 }
