@@ -3,6 +3,10 @@ h1{
   font-size: 20px ;
 }
 
+.body{
+  background-color: black;
+}
+
 .bandeau{
   background-color: #0a5c5a; /* Couleur principale */
   color: white;
@@ -46,7 +50,11 @@ h1{
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    transition: 0.25s;
-    
-   
+    transition: 0.25s;   
+}
+
+@media screen and (min-width: 80rem) {
+  . {
+    margin: 1em 2em;
+  }
 }
