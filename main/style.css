@@ -14,3 +14,8 @@ h1{
     display: flex;
     gap :30px
 }
+
+.img-container{
+  gap: 182px;
+  display : flex;
+}
