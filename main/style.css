@@ -1,13 +1,13 @@
 h1{
-    text-align: center;
-
+  text-align: center;
+  font-size: 20px ;
 }
 
 .bandeau{
   background-color: #0a5c5a; /* Couleur principale */
   color: white;
   text-align: center;
-  padding: 10px 5px; /* Hauteur et espacement */
+  padding: 2px 20px; /* Hauteur et espacement */
 }
 
 .header.a{
