@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main/style.css">
     <title>Portfolio</title>
 </head>
 
@@ -13,7 +14,7 @@
     </header>
 
     <footer>
-        © <?= date("d/m/Y") ?> - Mon Portfolio
+        © <?php echo date("d/m/Y") ?> - Mon Portfolio
     </footer>
 </body>
 
