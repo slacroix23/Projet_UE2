@@ -3,7 +3,7 @@ h1{
   font-size: 20px ;
 }
 
-.body{
+body{
   background-color: black;
 }
 
@@ -53,8 +53,8 @@ h1{
     transition: 0.25s;   
 }
 
-@media screen and (min-width: 80rem) {
+/*@media screen and (min-width: 80rem) {
   . {
     margin: 1em 2em;
   }
-}
+}*/

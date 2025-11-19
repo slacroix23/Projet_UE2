@@ -11,6 +11,10 @@
     <header class="bandeau">
         <h1>Portfolio d'Alexandre</h1>
     </header>
+
+    <footer>
+        © <?= date("d/m/Y") ?> - Mon Portfolio
+    </footer>
 </body>
 
 </html>
