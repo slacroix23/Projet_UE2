@@ -18,14 +18,42 @@
         <h1>Simon Lacroix's Portfolio</h1>
     </header>
 
-    <img src="../image/SimonL.jpg" alt="Photo" width="300">
-   <p>Simon Lacroix</p>
-   <p>18 years old</p>
-   <p>Visionary, Strategic, Ambitious, Solution-oriented</p>
-   <p>Leadership, Strategic decision-making, Fundraising, Market analysis</p>
-   <p>Tech entrepreneurship, Business management, Startup investment, AI innovation</p>
-   <p>Fashion, gastronomy, Japanese culture, video games, music</p>
-   
+    <div class="container">
+        <img src="../image/SimonL.jpg" alt="Photo" width="500">
+        <div class="info-container">
+
+            <div class="info-box">
+                <h3>Nom</h3>
+                <p>Simon Lacroix</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Âge</h3>
+                <p>18 years old</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Qualités</h3>
+                <p>Visionary, Strategic, Ambitious, Solution-oriented</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Compétences</h3>
+                <p>Leadership, Strategic decision-making, Fundraising, Market analysis</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Expérience / Intérêts pro</h3>
+                <p>Tech entrepreneurship, Business management, Startup investment, AI innovation</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Passions</h3>
+                <p>Fashion, gastronomy, Japanese culture, video games, music</p>
+            </div>
+        </div>
+    </div>
+
     <footer>
         © <?php echo date("d/m/Y") ?> - My Portfolio
     </footer>
