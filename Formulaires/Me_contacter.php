@@ -42,10 +42,6 @@
             $erreurs[] = "Company's must be insterted";
         }
 
-        if (empty($contact)) {
-            $erreurs[] = "Please select who contact";
-        }
-
         // Si pas d'erreurs, afficher le succès
         if (empty($erreurs)) {
             $succes = true;
@@ -87,9 +83,8 @@
         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
 
         <label for="age">Company *:</label>
-        <input type="text" id="entreprise" name="entreprise" value="<?php echo htmlspecialchars($entreprise ?? ''); ?>" required>
-
-
+        <input type="text" id="entreprise" name="entreprise" value="<?php echo htmlspecialchars($entreprise ?? ''); ?>"
+            required>
 
         <label for="message">Message * :</label>
         <textarea id="message" name="message" rows="4"
