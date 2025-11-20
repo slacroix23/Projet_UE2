@@ -17,15 +17,42 @@
         </div>
         <h1>Simon Orti's Portfolio</h1>
     </header>
+    <div class="container">
+        <img src="../image/SimonO.jpg" alt="Photo" width="500">
+        <div class="info-container">
 
-    <img src="../image/SimonO.jpg" alt="Photo" width="300">
-   <p>Simon Orti</p>
-   <p>18 years old</p>
-   <p>Rigorous, Visionary, Analytical, Collaborative</p>
-   <p>Machine learning, Tech leadership, Model optimization, Product strategy, Speaks 4 languages (French, English, Spanish, Chinese)</p>
-   <p>AI, Applied research, Team management, Model development</p>
-   <p>Handball, video games, culinary arts, music, sports in general, chatting with AI</p>
-   
+            <div class="info-box">
+                <h3>Nom</h3>
+                <p>Simon Orti</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Âge</h3>
+                <p>18 years old</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Qualités</h3>
+                <p>Rigorous, Visionary, Analytical, Collaborative</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Compétences</h3>
+                <p>Machine learning, Tech leadership, Model optimization, Product strategy, Speaks 4 languages (French, English, Spanish, Chinese)</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Expérience / Intérêts pro</h3>
+                <p>AI, Applied research, Team management, Model development</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Passions</h3>
+                <p>Handball, video games, culinary arts, music, sports in general, chatting with AI</p>
+            </div>
+        </div>
+    </div>
+
     <footer>
         © <?php echo date("d/m/Y") ?> - My Portfolio
     </footer>
