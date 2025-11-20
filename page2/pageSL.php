@@ -23,27 +23,27 @@
         <div class="info-container">
 
             <div class="info-box">
-                <h3>Nom</h3>
+                <h3>Name</h3>
                 <p>Simon Lacroix</p>
             </div>
 
             <div class="info-box">
-                <h3>Âge</h3>
+                <h3>Age</h3>
                 <p>18 years old</p>
             </div>
 
             <div class="info-box">
-                <h3>Qualités</h3>
+                <h3>Qualities</h3>
                 <p>Visionary, Strategic, Ambitious, Solution-oriented</p>
             </div>
 
             <div class="info-box">
-                <h3>Compétences</h3>
+                <h3>SKILLS</h3>
                 <p>Leadership, Strategic decision-making, Fundraising, Market analysis</p>
             </div>
 
             <div class="info-box">
-                <h3>Expérience / Intérêts pro</h3>
+                <h3>Experience / Professional interests</h3>
                 <p>Tech entrepreneurship, Business management, Startup investment, AI innovation</p>
             </div>
 
