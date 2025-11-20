@@ -19,19 +19,15 @@ body{
     gap :30px
 }
 
-.img-container {
-  justify-content: center; /* Centre le contenu horizontalement */
+.container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: center;
   gap: 40px;
   padding: 20px;
-  flex-wrap: wrap;
-  border-radius: 120%;
   justify-items: center;
 }
 
-.img-container img {
+.container img {
   width: auto/3; /* Largeur fixe pour la photo */
   height: auto;
   object-fit: cover;
@@ -39,31 +35,44 @@ body{
 }
 
 @media (max-width: 900px) {
-  .team {
+  .container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .team {
+  .container {
     grid-template-columns: 1fr;
   }
 }
 
 .card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex: 1 1 300px;
-  align-items: flex-start; /* Aligne les éléments en haut */
+  align-items: center; /* Aligne les éléments en haut */
   gap: 20px; /* Espace entre la photo et le texte */
   max-width: 100%; /* Pour éviter que le contenu ne dépasse */
   max-width: 350px;
 }
 
+.card button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #0f6153;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    position: static;
+  }
 
-/*.card .img{
-  border-radius: 10%;
-}*/
+
+.card .img{
+  width: 330px;
+  border-radius: 30px;
+}
 
 
 .boutonn {
