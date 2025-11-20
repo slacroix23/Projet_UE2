@@ -26,6 +26,7 @@ body{
   gap: 30px;
   padding: 40px 0;
   flex-wrap: wrap;
+  /*border-radius: 10%;*/
 }
 
 .img-container img {
@@ -41,6 +42,10 @@ body{
   align-items: flex-start; /* Aligne les éléments en haut */
   gap: 20px; /* Espace entre la photo et le texte */
   max-width: 100%; /* Pour éviter que le contenu ne dépasse */
+}
+
+.card .img{
+  border-radius: 10%;
 }
 
 
