@@ -23,13 +23,14 @@ body{
   justify-content: center; /* Centre le contenu horizontalement */
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 100px;
   padding: 40px 0;
   flex-wrap: wrap;
+  /*border-radius: 10%;*/
 }
 
 .img-container img {
-  width: 200px; /* Largeur fixe pour la photo */
+  width: auto/3; /* Largeur fixe pour la photo */
   height: auto;
   object-fit: cover;
   border-radius: 4px;
@@ -41,6 +42,10 @@ body{
   align-items: flex-start; /* Aligne les éléments en haut */
   gap: 20px; /* Espace entre la photo et le texte */
   max-width: 100%; /* Pour éviter que le contenu ne dépasse */
+}
+
+.card .img{
+  border-radius: 10%;
 }
 
 
@@ -64,6 +69,7 @@ body{
 footer {
     color: white;
 }
+
 
 p{
   font-size : 20px;
