@@ -23,13 +23,13 @@ body{
   justify-content: center; /* Centre le contenu horizontalement */
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 100px;
   padding: 40px 0;
   flex-wrap: wrap;
 }
 
 .img-container img {
-  width: 200px; /* Largeur fixe pour la photo */
+  width: 400px; /* Largeur fixe pour la photo */
   height: auto;
   object-fit: cover;
   border-radius: 4px;
