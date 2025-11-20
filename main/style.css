@@ -52,7 +52,7 @@ body{
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    transition: 0.2 5s;   
+    transition: 0.25s;   
 }
 
 /*@media screen and (min-width: 80rem) {
@@ -61,7 +61,7 @@ body{
   }
 }*/
 
-.footer {
+footer {
     color: white;
 }
 
