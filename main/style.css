@@ -26,7 +26,6 @@ body{
   gap: 100px;
   padding: 40px 0;
   flex-wrap: wrap;
-  /*border-radius: 10%;*/
 }
 
 .img-container img {
@@ -45,7 +44,7 @@ body{
 }
 
 .card .img{
-  border-radius: 10%;
+  /*border-radius: 50%;*/
 }
 
 
