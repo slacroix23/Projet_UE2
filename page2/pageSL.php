@@ -15,19 +15,19 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>    
         </div>
-        <h1>Portfolio de Simon Lacroix</h1>
+        <h1>Simon Lacroix’s Portfolio</h1>
     </header>
 
     <img src="../image/SimonL.jpg" alt="Photo" width="300">
-   <p class="nom">Simon Lacroix</p>
-   <p class="age">18 ans</p>
-   <p class="pérsonnalité">Visionnaire, Stratège, Ambitieux, Orienté solutions</p>
-   <p class="compétence">Leadership, Décision stratégique, Levée de fonds, Analyse de marché.</p>
-   <p class="XP">Entrepreneuriat tech, Direction d’entreprise, Investissement startup, Innovation IA</p>
-   <p class="passion">la mode, la gastronomie, la culture japonaise, les jeux vidéo, la musique</p>
+   <p>Simon Lacroix</p>
+   <p>18 years old</p>
+   <p>Visionary, Strategic, Ambitious, Solution-oriented</p>
+   <p>Leadership, Strategic decision-making, Fundraising, Market analysis</p>
+   <p>Tech entrepreneurship, Business management, Startup investment, AI innovation</p>
+   <p>Fashion, gastronomy, Japanese culture, video games, music</p>
    
     <footer>
-        © <?php echo date("d/m/Y") ?> - Mon Portfolio
+        © <?php echo date("d/m/Y") ?> - My Portfolio
     </footer>
 </body>
 
