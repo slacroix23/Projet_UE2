@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Me contacter</title>
+    <title>Contact us</title>
 </head>
 
 <body>
-    <h1>Me contacter</h1>
+    <h1>Contact us</h1>
 
     <?php
     $erreurs = [];
@@ -20,14 +20,14 @@
         $nom = trim($_POST['nom'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $entreprise = trim(string: $_POST['entreprise'] ?? '');
-        $contact = $_POST['Qui contacter ?'] ?? '';
+        $contact = $_POST['contact'] ?? '';
         $message = trim($_POST['message'] ?? '');
 
         // Validation
         if (empty($nom)) {
             $erreurs[] = "Le nom est obligatoire";
         } elseif (strlen($nom) < 2) {
-            $erreurs[] = "Le nom ";
+            $erreurs[] = "Le nom est obligatoire";
         }
 
         if (empty($email)) {
@@ -38,7 +38,7 @@
 
         if (empty($entreprise)) {
             $erreurs[] = "Le nom de l'entreprise est obligatoire";
-        } elseif (strlen(string: $entreprise) < 0) {
+        } elseif (strlen(string: $entreprise) < 1) {
             $erreurs[] = "Le nom de l'entreprise doit être insérer";
         }
 
@@ -71,7 +71,7 @@
         echo "<p><strong>Name :</strong> " . htmlspecialchars($nom) . "</p>";
         echo "<p><strong>Email :</strong> " . htmlspecialchars($email) . "</p>";
         echo "<p><strong>Company :</strong> $entreprise </p>";
-        echo "<p><strong>Who would you like to contact ? :</strong> $contact</p>";
+        echo "<p><strong>You have sent to :$contact :</strong> $contact</p>";
         if (!empty($message)) {
             echo "<p><strong>Message :</strong> " . nl2br(htmlspecialchars($message)) . "</p>";
         }
@@ -87,16 +87,15 @@
         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
 
         <label for="age">Company *:</label>
-        <input type="number" id="entreprise" name="entreprise"
-            value="<?php echo htmlspecialchars($entreprise ?? ''); ?>" required>
+        <input type="text" id="entreprise" name="entreprise" value="<?php echo htmlspecialchars($entreprise ?? ''); ?>" required>
 
-        <label for="contact">Pays * :</label>
+        <label for="contact">Who ? * :</label>
         <select id="contact" name="contact" required>
-            <option value="">-- Sélectionnez --</option>
+            <option value="">-- Select --</option>
             <option value="Simon O" <?php echo (isset($contact) && $contact == 'Simon O') ? 'selected' : ''; ?>>Simon O
             </option>
-            <option value="Alexandre" <?php echo (isset($contact) && $contact == 'Alexandre') ? 'selected' : ''; ?>>
-                Alexandre
+            <option value="Alexandre" <?php echo (isset($contact) && $contact == 'Alexandre') ? 'selected' : ''; ?>>Alexandre
+            </option>
             <option value="Simon L" <?php echo (isset($contact) && $contact == 'Simon L') ? 'selected' : ''; ?>>Simon L
             </option>
         </select>
@@ -106,10 +105,10 @@
         <textarea id="message" name="message" rows="4"
             requiredw><?php echo htmlspecialchars($message ?? ''); ?></textarea>
 
-        <button type="submit">Envoyer le message</button>
+        <button type="submit">Send a message</button>
     </form>
 
-    <p><small>* Champs obligatoires</small></p>
+    <p><small>* required field</small></p>
 
 </body>
 
