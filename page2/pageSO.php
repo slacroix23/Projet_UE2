@@ -17,9 +17,9 @@
         </div>
         <h1>Simon Orti's Portfolio</h1>
     </header>
-    <div class="container">
+    <div class="containeer">
         <img src="../image/SimonO.jpg" alt="Photo" width="500">
-        <div class="info-container">
+        <div class="info-containeer">
 
             <div class="info-box">
                 <h3>Name</h3>
