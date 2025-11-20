@@ -25,38 +25,38 @@
         <div class="info-container">
 
             <div class="info-box">
-                <h3>Nom</h3>
+                <h3>Name</h3>
                 <p>Alexandre Bertrand</p>
             </div>
 
             <div class="info-box">
-                <h3>Âge</h3>
-                <p>18 ans</p>
+                <h3>Age</h3>
+                <p>18 years old</p>
             </div>
 
             <div class="info-box">
-                <h3>Qualités</h3>
-                <p>Curieux, Créatif, Fiable, Esprit d'équipe</p>
+                <h3>Qualities</h3>
+                <p>Qualities, Curious, Creative, Reliable, Team Spirit</p>
             </div>
 
             <div class="info-box">
-                <h3>Compétences</h3>
-                <p>Programmation (JS, Python…), Git/GitHub, Résolution de problèmes, Architecture logicielle</p>
+                <h3>SKILLS</h3>
+                <p>Programming (JS, Python…), Git/GitHub, Problem solving, Software architecture</p>
             </div>
 
             <div class="info-box">
-                <h3>Expérience / Intérêts pro</h3>
-                <p>Développement web, Gestion de projets, Open-source, Collaboration tech</p>
+                <h3>Experience / Professional interests</h3>
+                <p>Web development, Project management, Open-source, Tech collaboration</p>
             </div>
 
             <div class="info-box">
                 <h3>Passions</h3>
-                <p>Volley, jeux vidéo, cybersécurité, musique, football</p>
+                <p>Volleyball, soccer, video games, cybersecurity, music</p>
             </div>
         </div>
     </div>
         <footer>
-            © <?php echo date("d/m/Y") ?> - Mon Portfolio
+            © <?php echo date("d/m/Y") ?> - My Portfolio
         </footer>
 </body>
 
