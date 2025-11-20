@@ -15,7 +15,7 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>    
         </div>
-        <h1>Portfolio de Alexandre Bertrand</h1>
+        <h1>Alexandre Bertrand’s Portfolio</h1>
     </header>
 
 
