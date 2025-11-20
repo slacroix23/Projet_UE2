@@ -24,7 +24,7 @@
    <p>Curieux, Créatif, Fiable, Esprit d’équipe</p>
    <p>Programmation (ex.: JavaScript, Python, etc.), Git / GitHub, Résolution de problèmes, Architecture logicielle</p>
    <p>Développement web, Gestion de projets, Contribution open-source, Collaboration équipe tech</p>
-   <p>volley, jeux video, cyber sécurité</p>
+   <p>volley, jeux video, cyber sécurité, musique, football</p>
    
     <footer>
         © <?php echo date("d/m/Y") ?> - Mon Portfolio
