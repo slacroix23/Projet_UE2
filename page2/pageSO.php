@@ -22,27 +22,27 @@
         <div class="info-container">
 
             <div class="info-box">
-                <h3>Nom</h3>
+                <h3>Name</h3>
                 <p>Simon Orti</p>
             </div>
 
             <div class="info-box">
-                <h3>Âge</h3>
+                <h3>Age</h3>
                 <p>18 years old</p>
             </div>
 
             <div class="info-box">
-                <h3>Qualités</h3>
+                <h3>Qualities</h3>
                 <p>Rigorous, Visionary, Analytical, Collaborative</p>
             </div>
 
             <div class="info-box">
-                <h3>Compétences</h3>
+                <h3>SKILLS</h3>
                 <p>Machine learning, Tech leadership, Model optimization, Product strategy, Speaks 4 languages (French, English, Spanish, Chinese)</p>
             </div>
 
             <div class="info-box">
-                <h3>Expérience / Intérêts pro</h3>
+                <h3>Experience / Professional interests</h3>
                 <p>AI, Applied research, Team management, Model development</p>
             </div>
 
