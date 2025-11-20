@@ -19,18 +19,17 @@ body{
     gap :30px
 }
 
-.img-container{
-  justify-content: space-evenly;
-  display :flex;
+.img-container {
+  justify-content: center; /* Centre le contenu horizontalement */
+  display: flex;
   align-items: center;
   gap: 30px;
   padding: 40px 0;
   flex-wrap: wrap;
 }
 
-.img-container img{
-  width: 28vw;
-  max-width: 350px;
+.img-container img {
+  width: 200px; /* Largeur fixe pour la photo */
   height: auto;
   object-fit: cover;
   border-radius: 4px;
@@ -38,9 +37,17 @@ body{
 
 .card {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row; /* Change de colonne à ligne */
+  align-items: flex-start; /* Aligne les éléments en haut */
+  gap: 20px; /* Espace entre la photo et le texte */
+  max-width: 100%; /* Pour éviter que le contenu ne dépasse */
 }
+
+.card-texte {
+  flex: 1; /* Permet au texte de prendre l'espace restant */
+  text-align: left; /* Aligne le texte à gauche */
+}
+
 
 .boutonn {
     padding: 10px 20px;
@@ -65,5 +72,6 @@ body{
 
 p{
   font-size : 20px;
-  
+  color :white;
+  flex : 1;
 }
