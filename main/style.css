@@ -37,15 +37,10 @@ body{
 
 .card {
   display: flex;
-  flex-direction: row; /* Change de colonne à ligne */
+  flex-direction: row;
   align-items: flex-start; /* Aligne les éléments en haut */
   gap: 20px; /* Espace entre la photo et le texte */
   max-width: 100%; /* Pour éviter que le contenu ne dépasse */
-}
-
-.card-texte {
-  flex: 1; /* Permet au texte de prendre l'espace restant */
-  text-align: left; /* Aligne le texte à gauche */
 }
 
 
@@ -57,7 +52,7 @@ body{
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    transition: 0.25s;   
+    transition: 0.2 5s;   
 }
 
 /*@media screen and (min-width: 80rem) {
