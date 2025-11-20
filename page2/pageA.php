@@ -10,7 +10,12 @@
 
 <body>
     <header class="bandeau">
-        <h1>Portfolio d'Alexandre</h1>
+        <div class="retour">
+            <a href="http://localhost/projet_ue2/main/index.html">
+                <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
+            </a>    
+        </div>
+        <h1>Portfolio de Alexandre Bertrand</h1>
     </header>
 
     <img src="../image/alex.jpg" alt="Photo" width="300">
@@ -19,7 +24,7 @@
    <p>Curieux, Créatif, Fiable, Esprit d’équipe</p>
    <p>Programmation (ex.: JavaScript, Python, etc.), Git / GitHub, Résolution de problèmes, Architecture logicielle</p>
    <p>Développement web, Gestion de projets, Contribution open-source, Collaboration équipe tech</p>
-   <p>volley, jeux video, cyber sécurité</p>
+   <p>volley, jeux video, cyber sécurité, musique, football</p>
    
     <footer>
         © <?php echo date("d/m/Y") ?> - Mon Portfolio
