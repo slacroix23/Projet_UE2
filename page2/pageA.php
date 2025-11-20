@@ -18,17 +18,46 @@
         <h1>Portfolio de Alexandre Bertrand</h1>
     </header>
 
-    <img src="../image/alex.jpg" alt="Photo" width="300">
-   <p>Alexandre Bertrand</p>
-   <p>18 ans</p>
-   <p>Curieux, Créatif, Fiable, Esprit d’équipe</p>
-   <p>Programmation (ex.: JavaScript, Python, etc.), Git / GitHub, Résolution de problèmes, Architecture logicielle</p>
-   <p>Développement web, Gestion de projets, Contribution open-source, Collaboration équipe tech</p>
-   <p>volley, jeux video, cyber sécurité, musique, football</p>
-   
-    <footer>
-        © <?php echo date("d/m/Y") ?> - Mon Portfolio
-    </footer>
+
+    
+    <div class="container">
+        <img src="../image/alex.jpg" alt="Photo" width="500">
+        <div class="info-container">
+
+            <div class="info-box">
+                <h3>Nom</h3>
+                <p>Alexandre Bertrand</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Âge</h3>
+                <p>18 ans</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Qualités</h3>
+                <p>Curieux, Créatif, Fiable, Esprit d'équipe</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Compétences</h3>
+                <p>Programmation (JS, Python…), Git/GitHub, Résolution de problèmes, Architecture logicielle</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Expérience / Intérêts pro</h3>
+                <p>Développement web, Gestion de projets, Open-source, Collaboration tech</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Passions</h3>
+                <p>Volley, jeux vidéo, cybersécurité, musique, football</p>
+            </div>
+        </div>
+    </div>
+        <footer>
+            © <?php echo date("d/m/Y") ?> - Mon Portfolio
+        </footer>
 </body>
 
 </html>
