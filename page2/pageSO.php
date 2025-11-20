@@ -15,7 +15,7 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>    
         </div>
-        <h1>Portfolio de Simon Orti</h1>
+        <h1>Simon Orti's Portfolio</h1>
     </header>
 
     <img src="../image/SimonO.jpg" alt="Photo" width="300">
