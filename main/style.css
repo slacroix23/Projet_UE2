@@ -30,7 +30,7 @@ body{
 }
 
 .img-container img {
-  width: 400px; /* Largeur fixe pour la photo */
+  width: auto/3; /* Largeur fixe pour la photo */
   height: auto;
   object-fit: cover;
   border-radius: 4px;
@@ -69,6 +69,7 @@ body{
 footer {
     color: white;
 }
+
 
 p{
   font-size : 20px;
