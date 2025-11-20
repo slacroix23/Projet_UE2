@@ -15,19 +15,19 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>    
         </div>
-        <h1>Portfolio de Simon Ortie</h1>
+        <h1>Portfolio de Simon Orti</h1>
     </header>
 
     <img src="../image/SimonO.jpg" alt="Photo" width="300">
-   <p class="nom">Simon Orti</p>
-   <p class="age">18 ans</p>
-   <p class="pérsonnalité">Rigoureux, Visionnaire, Analytique, Collaboratif</p>
-   <p class="compétence">Machine learning, Leadership tech, Optimisation de modèles, Stratégie produit, parle 4 langues (français, anglais, espagnol, chinoi)</p>
-   <p class="XP">IA, Recherche appliquée, Direction d’équipe, Développement de modèles</p>
-   <p class="passion">Handball, jeux video, l'art culinaire, la musique, le sport en général, chater avec l'ia</p>
+   <p>Simon Orti</p>
+   <p>18 years old</p>
+   <p>Rigorous, Visionary, Analytical, Collaborative</p>
+   <p>Machine learning, Tech leadership, Model optimization, Product strategy, Speaks 4 languages (French, English, Spanish, Chinese)</p>
+   <p>AI, Applied research, Team management, Model development</p>
+   <p>Handball, video games, culinary arts, music, sports in general, chatting with AI</p>
    
     <footer>
-        © <?php echo date("d/m/Y") ?> - Mon Portfolio
+        © <?php echo date("d/m/Y") ?> - My Portfolio
     </footer>
 </body>
 
