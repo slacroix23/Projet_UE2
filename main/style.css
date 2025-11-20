@@ -21,12 +21,14 @@ body{
 
 .img-container {
   justify-content: center; /* Centre le contenu horizontalement */
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  gap: 100px;
-  padding: 40px 0;
+  gap: 40px;
+  padding: 20px;
   flex-wrap: wrap;
   border-radius: 120%;
+  justify-items: center;
 }
 
 .img-container img {
@@ -36,13 +38,28 @@ body{
   border-radius: 10%;
 }
 
+@media (max-width: 900px) {
+  .team {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .team {
+    grid-template-columns: 1fr;
+  }
+}
+
 .card {
   display: flex;
   flex-direction: row;
+  flex: 1 1 300px;
   align-items: flex-start; /* Aligne les éléments en haut */
   gap: 20px; /* Espace entre la photo et le texte */
   max-width: 100%; /* Pour éviter que le contenu ne dépasse */
+  max-width: 350px;
 }
+
 
 /*.card .img{
   border-radius: 10%;
