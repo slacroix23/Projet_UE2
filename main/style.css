@@ -32,7 +32,7 @@ body{
   width: auto/3; /* Largeur fixe pour la photo */
   height: auto;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 10%;
 }
 
 .card {
