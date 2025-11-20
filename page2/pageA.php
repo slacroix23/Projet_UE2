@@ -15,20 +15,49 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>    
         </div>
-        <h1>Portfolio de Alexandre Bertrand</h1>
+        <h1>Alexandre Bertrand’s Portfolio</h1>
     </header>
 
-    <img src="../image/alex.jpg" alt="Photo" width="300">
-   <p>Alexandre Bertrand</p>
-   <p>18 ans</p>
-   <p>Curieux, Créatif, Fiable, Esprit d’équipe</p>
-   <p>Programmation (ex.: JavaScript, Python, etc.), Git / GitHub, Résolution de problèmes, Architecture logicielle</p>
-   <p>Développement web, Gestion de projets, Contribution open-source, Collaboration équipe tech</p>
-   <p>volley, jeux video, cyber sécurité, musique, football</p>
-   
-    <footer>
-        © <?php echo date("d/m/Y") ?> - Mon Portfolio
-    </footer>
+
+    
+    <div class="container">
+        <img src="../image/alex.jpg" alt="Photo" width="500">
+        <div class="info-container">
+
+            <div class="info-box">
+                <h3>Name</h3>
+                <p>Alexandre Bertrand</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Age</h3>
+                <p>18 years old</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Qualities</h3>
+                <p>Qualities, Curious, Creative, Reliable, Team Spirit</p>
+            </div>
+
+            <div class="info-box">
+                <h3>SKILLS</h3>
+                <p>Programming (JS, Python…), Git/GitHub, Problem solving, Software architecture</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Experience / Professional interests</h3>
+                <p>Web development, Project management, Open-source, Tech collaboration</p>
+            </div>
+
+            <div class="info-box">
+                <h3>Passions</h3>
+                <p>Volleyball, soccer, video games, cybersecurity, music</p>
+            </div>
+        </div>
+    </div>
+        <footer>
+            © <?php echo date("d/m/Y") ?> - My Portfolio
+        </footer>
 </body>
 
 </html>

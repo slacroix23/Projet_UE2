@@ -10,7 +10,8 @@ body{
 .bandeau{
   background-color: #0a5c5a; /* Couleur principale */
   color: white;
-  text-align: center;
+  align-items: center;     /* Aligne la flèche et le texte verticalement */
+  gap: 15px;
   padding: 2px 20px; /* Hauteur et espacement */
 }
 
@@ -101,4 +102,43 @@ p{
   font-size : 20px;
   color :white;
   flex : 1;
+}
+
+.container {
+    display: flex;              /* image + texte côte à côte */
+    align-items: center;        /* aligne verticalement */
+    gap: 40px;                  /* espacement entre image et texte */
+    padding: 20px;
+}
+.info-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.info-box {
+    background: #0e393a; /* proche de la couleur de ton header */
+    text-align: center;
+    color: white;
+    padding: 20px;
+    width: 260px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.info-box h3 {
+    margin-top: 0;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
 }
