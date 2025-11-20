@@ -15,19 +15,19 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>    
         </div>
-        <h1>Portfolio de Alexandre Bertrand</h1>
+        <h1>Alexandre Bertrand’s Portfolio</h1>
     </header>
 
     <img src="../image/alex.jpg" alt="Photo" width="300">
    <p>Alexandre Bertrand</p>
-   <p>18 ans</p>
-   <p>Curieux, Créatif, Fiable, Esprit d’équipe</p>
-   <p>Programmation (ex.: JavaScript, Python, etc.), Git / GitHub, Résolution de problèmes, Architecture logicielle</p>
-   <p>Développement web, Gestion de projets, Contribution open-source, Collaboration équipe tech</p>
-   <p>volley, jeux video, cyber sécurité, musique, football</p>
+   <p>18 years old</p>
+   <p>Curious, Creative, Reliable, Team-oriented</p>
+   <p>Programming (e.g., JavaScript, Python, etc.), Git / GitHub, Problem-solving, Software architecture</p>
+   <p>Web development, Project management, Open-source contribution, Tech team collaboration</p>
+   <p>Volleyball, video games, cybersecurity, music, soccer</p>
    
     <footer>
-        © <?php echo date("d/m/Y") ?> - Mon Portfolio
+        © <?php echo date("d/m/Y") ?> - My Portfolio
     </footer>
 </body>
 
