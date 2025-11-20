@@ -125,7 +125,7 @@ p {
 }
 
 .info-box {
-    background: #0e393a; /* proche de la couleur de ton header */
+    background: #0e393a; 
     text-align: center;
     color: white;
     padding: 20px;
