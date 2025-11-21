@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <div>
+        <a href="http://localhost/projet_ue2/main/index.html">
+            <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
+        </a>    
+    </div>
     <h1>Contact us</h1>
 
     <?php
