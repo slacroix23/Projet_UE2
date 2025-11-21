@@ -4,11 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="">
-=======
     <title>Contact us</title>
->>>>>>> f82c55c0acc6f426fae59ad711745058df7eeaf0
 </head>
 
 <body>
