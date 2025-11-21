@@ -55,6 +55,10 @@
 
     <footer>
         © <?php echo date("d/m/Y") ?> - My Portfolio
+        <footer>
+            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
+                <button class="boutonn">contact us</button>
+            </a>
     </footer>
 </body>
 
