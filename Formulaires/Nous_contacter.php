@@ -78,7 +78,7 @@
         echo "<p><strong>Name :</strong> " . htmlspecialchars($nom) . "</p>";
         echo "<p><strong>Email :</strong> " . htmlspecialchars($email) . "</p>";
         echo "<p><strong>Company :</strong> $entreprise </p>";
-        echo "<p><strong>You have sent to :$contact :</strong> $contact</p>";
+        echo "<p><strong>You have sent to :</strong> $contact</p>";
         if (!empty($message)) {
             echo "<p><strong>Message :</strong> " . nl2br(htmlspecialchars($message)) . "</p>";
         }
