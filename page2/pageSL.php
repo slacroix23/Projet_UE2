@@ -10,7 +10,7 @@
 
 <body>
     <header class="bandeau">
-        <div>
+        <div> <!-- Bouton de retour -->
             <a href="http://localhost/projet_ue2/main/index.html">
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>    
@@ -18,9 +18,9 @@
         <h1>Simon Lacroix's Portfolio</h1>
     </header>
 
-    <div class="containeer">
+    <div class="containeer"> <!-- Box avec la photo et les infos -->
         <img src="../image/SimonL.jpg" alt="Photo" width="500">
-        <div class="info-containeer">
+        <div class="info-containeer"> <!-- Infos de Simon S-->
 
             <div class="info-box">
                 <h3>Name</h3>
@@ -55,8 +55,8 @@
     </div>
 
     <footer>
-        © <?php echo date("d/m/Y") ?> - My Portfolio
-        <footer>
+        © <?php echo date("d/m/Y") ?> - My Portfolio <!-- Copyright-->
+        <footer> <!-- Bouton de Contact-->
             <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
                 <button class="boutonn">Contact me</button>
             </a>
