@@ -1,5 +1,5 @@
 
-/* ========== IMPORT POLICES (facultatif, mais joli) ========== */
+/* ========== IMPORT POLICES ========== */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ========== VARIABLES GLOBALES ========== */
@@ -131,7 +131,7 @@ a {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
-/* ========== FOOTER (BOUTON CONTACT) ========== */
+/* ========== FOOTER ========== */
 footer {
   grid-column: 1 / -1; /* le footer occupe toute la largeur de la grille */
   text-align: center;
