@@ -10,19 +10,19 @@
 
 <body>
     <header class="bandeau">
-        <div>
+        <div> <!-- retourner sur la page d'acceuil -->
             <a href="http://localhost/projet_ue2/main/index.html">
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>    
         </div>
-        <h1>Alexandre Bertrand's Portfolio</h1>
+        <h1>Alexandre Bertrand's Portfolio</h1><!-- portfolio d'Alex -->
     </header>
 
 
     
-    <div class="containeer">
+    <div class="containeer"><!-- photo du portfolio -->
         <img src="../image/alex.jpg" alt="Photo" width="500">
-        <div class="info-containeer">
+        <div class="info-containeer"><!-- box où il y a les infos d'alex-->
 
             <div class="info-box">
                 <h3>Name</h3>
@@ -56,10 +56,10 @@
         </div>
     </div>
         <footer>
-            © <?php echo date("d/m/Y") ?> - My Portfolio
+            © <?php echo date("d/m/Y") ?> - My Portfolio <!-- copyright -->
             <footer>
-            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
-                <button class="boutonn">Contact me</button>
+            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php"><!-- lien pour contacter Alex -->
+                <button class="boutonn">Contact me</button><!-- bouton pour y acceder -->
             </a>
         </footer>
 </body>
