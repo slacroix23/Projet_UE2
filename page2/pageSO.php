@@ -13,7 +13,7 @@
         <div><!-- retourner sur la page d'acceuil -->
             <a href="http://localhost/projet_ue2/main/index.html">
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
-            </a>    
+            </a>
         </div>
         <h1>Simon Orti's Portfolio</h1><!-- portfolio de Simon O-->
     </header>
@@ -38,7 +38,8 @@
 
             <div class="info-box">
                 <h3>SKILLS</h3>
-                <p>Machine learning, Tech leadership, Model optimization, Product strategy, Speaks 4 languages (French, English, Spanish, Chinese)</p>
+                <p>Machine learning, Tech leadership, Model optimization, Product strategy, Speaks 4 languages (French,
+                    English, Spanish, Chinese)</p>
             </div>
 
             <div class="info-box">
@@ -59,7 +60,7 @@
             <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php"><!-- lien pour contacter Simon O -->
                 <button class="boutonn">Contact me</button><!-- bouton pour y acceder -->
             </a>
-    </footer>
+        </footer>
 </body>
 
 </html>
