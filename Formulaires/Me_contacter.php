@@ -11,40 +11,27 @@
 <body>
     <?php
     try {
-        $pdo = new PDO (
-            'mysql : host = localhost ; dbname = cyberfolio ; charset = utf8mb4 ',
-            'root ',
+        $pdo = new PDO(
+            'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
+            'root',
             '' // mot de passe vide en local
-    );
-    $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION );
+        );
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-     echo " Connexion reussie !";
- } catch ( PDOException $e ) {
-     die(" Erreur de connexion : " . $e -> getMessage () );
- }
- ?>
+
+    } catch (PDOException $e) {
+        die("Erreur de connexion:" . $e->getMessage());
+    }
+    ?>
 
     <div>
         <a href="http://localhost/projet_ue2/main/index.html">
             <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
-        </a>    
-        </div>
+        </a>
+    </div>
 
     <h1>Contact me</h1>
 
-    <?php
-    try {
-        $pdo = new PDO (
-        'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4' ,
-        'root' ,
-        '' // mot de passe vide en local
-        ) ;
-        $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION ) ;
-
-    } catch ( PDOException $e ) {
-        die ( " Erreur de connexion : " . $e -> getMessage () ) ;
-    }
-    ?>
     <?php
     $erreurs = [];
     $succes = false;
