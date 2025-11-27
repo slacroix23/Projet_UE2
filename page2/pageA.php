@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../main/style.css">
     <title>Portfolio</title>
+    <?php
+    try {
+        $pdo = new PDO(
+            'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
+            'root',
+            '' // mot de passe vide en local
+        );
+        $stmt = $pdo->query('SELECT * FROM nous WHERE id=2');
+        $personne = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        die("Erreur de connexion:" . $e->getMessage());
+    }
+
+
+    ?>
 </head>
 
 <body>
@@ -15,7 +30,7 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>
         </div>
-        <h1>Alexandre Bertrand's Portfolio</h1><!-- portfolio d'Alex -->
+        <h1><?= $personne["nom"] ?>'s Portfolio</h1><!-- portfolio d'Alex -->
     </header>
 
 
@@ -26,32 +41,32 @@
 
             <div class="info-box">
                 <h3>Name</h3>
-                <p>Alexandre Bertrand</p>
+                <p><?=$personne["nom"]?></p>
             </div>
 
             <div class="info-box">
                 <h3>Age</h3>
-                <p>18 years old</p>
+                <p><?= $personne["Age"]?> years old</p>
             </div>
 
             <div class="info-box">
                 <h3>Qualities</h3>
-                <p>Qualities, Curious, Creative, Reliable, Team Spirit</p>
+                <p><?= $personne["Qualities"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>SKILLS</h3>
-                <p>Programming (JS, Python…), Git/GitHub, Problem solving, Software architecture</p>
+                <p><?= $personne["Skills"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>Experience / Professional interests</h3>
-                <p>Web development, Project management, Open-source, Tech collaboration</p>
+                <p><?= $personne["Experience"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>Passions</h3>
-                <p>Volleyball, soccer, video games, cybersecurity, music</p>
+                <p><?= $personne["Passions"] ?></p>
             </div>
         </div>
     </div>
