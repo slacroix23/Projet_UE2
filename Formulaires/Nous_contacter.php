@@ -12,24 +12,25 @@
     <div>
         <a href="http://localhost/projet_ue2/main/index.html">
             <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
-        </a>    
+        </a>
     </div>
 
     <h1>Contact us</h1>
 
-    
-    <?php
-    try {
-        $pdo = new PDO (
-        'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4' ,
-        'root' ,
-        '' // mot de passe vide en local
-        ) ;
-        $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION ) ;
 
-    } catch ( PDOException $e ) {
-        die ( " Erreur de connexion : " . $e -> getMessage () ) ;
-    }
+    <?php
+    // Connexion à la BDD (à adapter)
+    $pdo = new PDO(
+        'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
+        'root',
+        '',
+    );
+    $pdo->setAttribute(attribute: PDO::ATTR_ERRMODE, value: PDO::ERRMODE_EXCEPTION);
+
+    // On récupère les contacts
+    $sql = "SELECT id, nom, email FROM nous ORDER BY nom";
+    $stmt = $pdo->query($sql);
+    $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <?php
     $erreurs = [];
@@ -108,18 +109,34 @@
         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
 
         <label for="age">Company *:</label>
-        <input type="text" id="entreprise" name="entreprise" value="<?php echo htmlspecialchars($entreprise ?? ''); ?>" required>
+        <input type="text" id="entreprise" name="entreprise" value="<?php echo htmlspecialchars($entreprise ?? ''); ?>"
+            required>
 
-        <label for="contact">Who ? * :</label>
+        <!--<label for="contact">Who ? * :</label>
         <select id="contact" name="contact" required>
             <option value="">-- Select --</option>
             <option value="Simon O" <?php echo (isset($contact) && $contact == 'Simon O') ? 'selected' : ''; ?>>Simon O
             </option>
-            <option value="Alexandre" <?php echo (isset($contact) && $contact == 'Alexandre') ? 'selected' : ''; ?>>Alexandre
+            <option value="Alexandre" <?php echo (isset($contact) && $contact == 'Alexandre') ? 'selected' : ''; ?>>
+                Alexandre
             </option>
             <option value="Simon L" <?php echo (isset($contact) && $contact == 'Simon L') ? 'selected' : ''; ?>>Simon L
             </option>
-        </select>
+        </select>-->
+        
+        <label for="contact">Who ? * :</label>
+    <select id="contact" name="contact" required>
+        <option value="">-- Select --</option>
+
+    <?php foreach ($contacts as $c): ?>
+        <option
+            value="<?= htmlspecialchars($c['id']) ?>"
+            <?= isset($contact) && $contact == $c['id'] ? 'selected' : '' ?>
+        >
+            <?= htmlspecialchars($c['nom']) ?>
+        </option>
+    <?php endforeach; ?>
+</select>
 
 
         <label for="message">Message * :</label>
