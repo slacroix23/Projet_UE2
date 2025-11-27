@@ -42,6 +42,7 @@
             <div class="info-box">
                 <h3>Name</h3>
                 <p><?=$personne["nom"]?></p>
+                
             </div>
 
             <div class="info-box">
