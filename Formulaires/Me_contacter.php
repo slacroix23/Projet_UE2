@@ -9,6 +9,21 @@
 </head>
 
 <body>
+    <?php
+    try {
+        $pdo = new PDO (
+            'mysql : host = localhost ; dbname = cyberfolio ; charset = utf8mb4 ',
+            'root ',
+            '' // mot de passe vide en local
+    );
+    $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION );
+
+     echo " Connexion reussie !";
+ } catch ( PDOException $e ) {
+     die(" Erreur de connexion : " . $e -> getMessage () );
+ }
+ ?>
+
     <div>
         <a href="http://localhost/projet_ue2/main/index.html">
             <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
