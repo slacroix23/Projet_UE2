@@ -19,17 +19,19 @@
 
     
     <?php
-    try {
-        $pdo = new PDO (
-        'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4' ,
-        'root' ,
-        '' // mot de passe vide en local
-        ) ;
-        $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION ) ;
+// Connexion à la BDD (à adapter)
+$pdo = new PDO(
+    'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
+    'root',
+    '',
+);
+$pdo -> setAttribute( attribute: PDO :: ATTR_ERRMODE , value: PDO::ERRMODE_EXCEPTION ); 
 
-    } catch ( PDOException $e ) {
-        die ( " Erreur de connexion : " . $e -> getMessage () ) ;
-    }
+// On récupère les contacts
+$sql = "SELECT id, nom, email FROM personnes ORDER BY nom";
+$stmt = $pdo->query($sql);
+$contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
     ?>
     <?php
     $erreurs = [];
@@ -68,18 +70,18 @@
         }
 
         // Si pas d'erreurs, afficher le succès
-        if (empty($erreurs)) {
-            $succes = true;
-        }
-    }
+        if (empty($erreurs)) {  
+            $succes = true; 
+        }   
+    }   
 
-    // Afficher les erreurs
-    if (!empty($erreurs)) {
-        echo '<div class="erreur">';
-        echo '<h3>Erreurs :</h3>';
-        echo '<ul>';
+    // Afficher les erreurs 
+    if (!empty($erreurs)) { 
+        echo '<div class="erreur">' ;
+        echo '<h3>Erreurs :</h3>';  
+        echo '<ul>';    
         foreach ($erreurs as $erreur) {
-            echo "<li>$erreur</li>";
+            echo "<li>$erreur</li>" ;
         }
         echo '</ul>';
         echo '</div>';
