@@ -12,26 +12,25 @@
     <div>
         <a href="http://localhost/projet_ue2/main/index.html">
             <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
-        </a>    
+        </a>
     </div>
 
     <h1>Contact us</h1>
 
-    
-    <?php
-// Connexion à la BDD (à adapter)
-$pdo = new PDO(
-    'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
-    'root',
-    '',
-);
-$pdo -> setAttribute( attribute: PDO :: ATTR_ERRMODE , value: PDO::ERRMODE_EXCEPTION ); 
 
-// On récupère les contacts
-$sql = "SELECT id, nom, email FROM personnes ORDER BY nom";
-$stmt = $pdo->query($sql);
-$contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
+    <?php
+    // Connexion à la BDD (à adapter)
+    $pdo = new PDO(
+        'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
+        'root',
+        '',
+    );
+    $pdo->setAttribute(attribute: PDO::ATTR_ERRMODE, value: PDO::ERRMODE_EXCEPTION);
+
+    // On récupère les contacts
+    $sql = "SELECT id, nom, email FROM nous ORDER BY nom";
+    $stmt = $pdo->query($sql);
+    $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <?php
     $erreurs = [];
@@ -70,18 +69,18 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
         // Si pas d'erreurs, afficher le succès
-        if (empty($erreurs)) {  
-            $succes = true; 
-        }   
-    }   
+        if (empty($erreurs)) {
+            $succes = true;
+        }
+    }
 
-    // Afficher les erreurs 
-    if (!empty($erreurs)) { 
-        echo '<div class="erreur">' ;
-        echo '<h3>Erreurs :</h3>';  
-        echo '<ul>';    
+    // Afficher les erreurs
+    if (!empty($erreurs)) {
+        echo '<div class="erreur">';
+        echo '<h3>Erreurs :</h3>';
+        echo '<ul>';
         foreach ($erreurs as $erreur) {
-            echo "<li>$erreur</li>" ;
+            echo "<li>$erreur</li>";
         }
         echo '</ul>';
         echo '</div>';
@@ -110,18 +109,22 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
 
         <label for="age">Company *:</label>
-        <input type="text" id="entreprise" name="entreprise" value="<?php echo htmlspecialchars($entreprise ?? ''); ?>" required>
-
+        <input type="text" id="entreprise" name="entreprise" value="<?php echo htmlspecialchars($entreprise ?? ''); ?>"
+            required>
+        
         <label for="contact">Who ? * :</label>
-        <select id="contact" name="contact" required>
-            <option value="">-- Select --</option>
-            <option value="Simon O" <?php echo (isset($contact) && $contact == 'Simon O') ? 'selected' : ''; ?>>Simon O
-            </option>
-            <option value="Alexandre" <?php echo (isset($contact) && $contact == 'Alexandre') ? 'selected' : ''; ?>>Alexandre
-            </option>
-            <option value="Simon L" <?php echo (isset($contact) && $contact == 'Simon L') ? 'selected' : ''; ?>>Simon L
-            </option>
-        </select>
+    <select id="contact" name="contact" required>
+        <option value="">-- Select --</option>
+
+    <?php foreach ($contacts as $c): ?>
+        <option
+            value="<?= htmlspecialchars($c['id']) ?>"
+            <?= isset($contact) && $contact == $c['id'] ? 'selected' : '' ?>
+        >
+            <?= htmlspecialchars($c['nom']) ?>
+        </option>
+    <?php endforeach; ?>
+</select>
 
 
         <label for="message">Message * :</label>
