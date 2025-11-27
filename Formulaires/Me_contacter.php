@@ -18,6 +18,20 @@
     <h1>Contact me</h1>
 
     <?php
+    try {
+        $pdo = new PDO (
+        'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4' ,
+        'root' ,
+        '' // mot de passe vide en local
+        ) ;
+        $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION ) ;
+
+        echo " Connexion reussie ! " ;
+    } catch ( PDOException $e ) {
+        die ( " Erreur de connexion : " . $e -> getMessage () ) ;
+    }
+    ?>
+    <?php
     $erreurs = [];
     $succes = false;
 
