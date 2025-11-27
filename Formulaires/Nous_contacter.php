@@ -42,7 +42,6 @@
         $nom = trim($_POST['nom'] ?? '');
         $email = trim($_POST['email'] ?? '');
         $entreprise = trim(string: $_POST['entreprise'] ?? '');
-        
         $contact = $_POST['contact'] ?? '';
         $message = trim($_POST['message'] ?? '');
 
