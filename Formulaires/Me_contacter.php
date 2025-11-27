@@ -26,7 +26,6 @@
         ) ;
         $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION ) ;
 
-        echo " Connexion reussie ! " ;
     } catch ( PDOException $e ) {
         die ( " Erreur de connexion : " . $e -> getMessage () ) ;
     }
