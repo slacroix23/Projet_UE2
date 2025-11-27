@@ -13,9 +13,8 @@
             'root',
             '' // mot de passe vide en local
         );
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
+        $stmt = $pdo->query('SELECT * FROM nous WHERE id=1');
+        $personne = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         die("Erreur de connexion:" . $e->getMessage());
     }
@@ -29,7 +28,7 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>
         </div>
-        <h1>Simon Orti's Portfolio</h1><!-- portfolio de Simon O-->
+        <h1><?= $personne["nom"] ?>'s Portfolio</h1><!-- portfolio d'Alex -->
     </header>
     <div class="containeer"><!-- photo du portfolio -->
         <img src="../image/SimonO.jpg" alt="Photo" width="500">
@@ -37,33 +36,32 @@
 
             <div class="info-box">
                 <h3>Name</h3>
-                <p>Simon Orti</p>
+                <p><?=$personne["nom"]?></p>
             </div>
 
             <div class="info-box">
                 <h3>Age</h3>
-                <p>18 years old</p>
+                <p><?= $personne["Age"]?></p>
             </div>
 
             <div class="info-box">
                 <h3>Qualities</h3>
-                <p>Rigorous, Visionary, Analytical, Collaborative</p>
+                <p><?= $personne["Qualities"] ?> years old</p>
             </div>
 
             <div class="info-box">
                 <h3>SKILLS</h3>
-                <p>Machine learning, Tech leadership, Model optimization, Product strategy, Speaks 4 languages (French,
-                    English, Spanish, Chinese)</p>
+                <p><?= $personne["Skills"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>Experience / Professional interests</h3>
-                <p>AI, Applied research, Team management, Model development</p>
+                <p><?= $personne["Experience"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>Passions</h3>
-                <p>Handball, video games, culinary arts, music, sports in general, chatting with AI</p>
+                <p><?= $personne["Passions"] ?></p>
             </div>
         </div>
     </div>
