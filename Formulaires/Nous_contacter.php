@@ -17,6 +17,20 @@
 
     <h1>Contact us</h1>
 
+    
+    <?php
+    try {
+        $pdo = new PDO (
+        'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4' ,
+        'root' ,
+        '' // mot de passe vide en local
+        ) ;
+        $pdo -> setAttribute ( PDO :: ATTR_ERRMODE , PDO :: ERRMODE_EXCEPTION ) ;
+
+    } catch ( PDOException $e ) {
+        die ( " Erreur de connexion : " . $e -> getMessage () ) ;
+    }
+    ?>
     <?php
     $erreurs = [];
     $succes = false;
