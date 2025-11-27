@@ -24,20 +24,25 @@
 </head>
 
 <body>
+    <!-- Bandeau d'en-tête -->
     <header class="bandeau">
-        <div> <!-- retourner sur la page d'acceuil -->
+        <!-- Retourner sur la page d'acceuil -->
+        <div> 
             <a href="http://localhost/projet_ue2/main/index.html">
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>
         </div>
-        <h1><?= $personne["nom"] ?>'s Portfolio</h1><!-- portfolio d'Alex -->
+        <!-- portfolio d'Alex -->
+        <h1><?= $personne["nom"] ?>'s Portfolio</h1>
     </header>
 
 
 
-    <div class="containeer"><!-- photo du portfolio -->
+    <div class="containeer">
+        <!-- photo du portfolio -->
         <img src="../image/alex.jpg" alt="Photo" width="500">
-        <div class="info-containeer"><!-- box où il y a les infos d'alex-->
+        <!-- box d'infos d'Alex-->
+        <div class="info-containeer">
 
             <div class="info-box">
                 <h3>Name</h3>
@@ -70,11 +75,15 @@
             </div>
         </div>
     </div>
+
     <footer>
-        © <?php echo date("d/m/Y") ?> - My Portfolio <!-- copyright -->
+        <!-- Copyright -->
+        © <?php echo date("d/m/Y") ?> - My Portfolio 
         <footer>
-            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php"><!-- lien pour contacter Alex -->
-                <button class="boutonn">Contact me</button><!-- bouton pour y acceder -->
+            <!-- lien pour contacter Alex -->
+            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
+                <!-- Bouton nous contacter -->
+                <button class="boutonn">Contact me</button>
             </a>
         </footer>
 </body>

@@ -14,11 +14,12 @@
             '' // mot de passe vide en local
         );
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
+        $stmt = $pdo->query('SELECT * FROM nous WHERE id=1');
+        $personne = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         die("Erreur de connexion:" . $e->getMessage());
     }
+
     ?>
 </head>
 
@@ -31,7 +32,7 @@
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>
         </div>
-        <h1>Simon Lacroix's Portfolio</h1>
+        <h1><?= $personne["nom"] ?>'s Portfolio</h1>
     </header>
 
     <!-- Conteneur principal de la photo et des infos -->
@@ -42,32 +43,32 @@
 
             <div class="info-box">
                 <h3>Name</h3>
-                <p>Simon Lacroix</p>
+                <p><?=$personne["nom"]?></p>
             </div>
 
             <div class="info-box">
                 <h3>Age</h3>
-                <p>18 years old</p>
+                <p><?= $personne["Age"]?> years old</p>
             </div>
 
             <div class="info-box">
                 <h3>Qualities</h3>
-                <p>Visionary, Strategic, Ambitious, Solution-oriented</p>
+                <p><?= $personne["Qualities"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>SKILLS</h3>
-                <p>Leadership, Strategic decision-making, Fundraising, Market analysis</p>
+                <p><?= $personne["Skills"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>Experience / Professional interests</h3>
-                <p>Tech entrepreneurship, Business management, Startup investment, AI innovation</p>
+                <p><?= $personne["Experience"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>Passions</h3>
-                <p>Fashion, gastronomy, Japanese culture, video games, music</p>
+                <p><?= $personne["Passions"] ?></p>
             </div>
         </div>
     </div>
