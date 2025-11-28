@@ -43,12 +43,12 @@
 
             <div class="info-box">
                 <h3>Name</h3>
-                <p><?=$personne["nom"]?></p>
+                <p><?= $personne["nom"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>Age</h3>
-                <p><?= $personne["Age"]?> years old</p>
+                <p><?= $personne["Age"] ?> years old</p>
             </div>
 
             <div class="info-box">
@@ -80,6 +80,9 @@
             <!-- Bouton pour nous contacter -->
             <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
                 <button class="boutonn">Contact me</button>
+            </a>
+            <a class="cadenas" href="http://localhost/projet_ue2/dashboard/login.php">
+                <img src="../image/cadenas.png" alt="bouton de login" width="40">
             </a>
         </footer>
 </body>

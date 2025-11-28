@@ -27,7 +27,7 @@
     <!-- Bandeau d'en-tête -->
     <header class="bandeau">
         <!-- Retourner sur la page d'acceuil -->
-        <div> 
+        <div>
             <a href="http://localhost/projet_ue2/main/index.html">
                 <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
             </a>
@@ -46,12 +46,12 @@
 
             <div class="info-box">
                 <h3>Name</h3>
-                <p><?=$personne["nom"]?></p>
+                <p><?= $personne["nom"] ?></p>
             </div>
 
             <div class="info-box">
                 <h3>Age</h3>
-                <p><?= $personne["Age"]?> years old</p>
+                <p><?= $personne["Age"] ?> years old</p>
             </div>
 
             <div class="info-box">
@@ -78,12 +78,15 @@
 
     <footer>
         <!-- Copyright -->
-        © <?php echo date("d/m/Y") ?> - My Portfolio 
+        © <?php echo date("d/m/Y") ?> - My Portfolio
         <footer>
             <!-- lien pour contacter Alex -->
             <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
                 <!-- Bouton nous contacter -->
                 <button class="boutonn">Contact me</button>
+            </a>
+            <a class="cadenas" href="http://localhost/projet_ue2/dashboard/login.php">
+                <img src="../image/cadenas.png" alt="bouton de login" width="40">
             </a>
         </footer>
 </body>
