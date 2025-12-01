@@ -78,7 +78,7 @@
         © <?php echo date("d/m/Y") ?> - My Portfolio
         <footer>
             <!-- Bouton pour nous contacter -->
-            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
+            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php?id=<?= $personne['id'] ?>">
                 <button class="boutonn">Contact me</button>
             </a>
             <a class="cadenas" href="http://localhost/projet_ue2/dashboard/login.php">

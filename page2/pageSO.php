@@ -69,7 +69,7 @@
     <footer>
         © <?php echo date("d/m/Y") ?> - My Portfolio <!-- copyright -->
         <footer>
-            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php"><!-- lien pour contacter Simon O -->
+            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php?id=<?= $personne['id'] ?>">
                 <button class="boutonn">Contact me</button><!-- bouton pour y acceder -->
             </a>
             <a class="cadenas" href="http://localhost/projet_ue2/dashboard/login.php">
