@@ -14,7 +14,7 @@
             '' // mot de passe vide en local
         );
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $pdo->query('SELECT * FROM nous WHERE id=1');
+        $stmt = $pdo->query('SELECT * FROM nous WHERE id=3');
         $personne = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         die("Erreur de connexion:" . $e->getMessage());
