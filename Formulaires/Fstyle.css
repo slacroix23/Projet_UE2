@@ -85,6 +85,7 @@ label small {
 }
 
 input[type="text"],
+input[type="password"]
 input[type="email"],
 select,
 textarea {
@@ -101,12 +102,14 @@ textarea {
 }
 
 input[type="text"]::placeholder,
+input[type="password"]::placeholder,
 input[type="email"]::placeholder,
 textarea::placeholder {
     color: #9ca3af;
 }
 
 input[type="text"]:focus,
+input[type="password"]:focus,
 input[type="email"]:focus,
 select:focus,
 textarea:focus {
