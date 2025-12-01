@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
     <?php
     // Connexion à la BDD
     $pdo = new PDO(
@@ -20,6 +20,6 @@
     ?>
 </head>
 <body>
-    
+    <h2>Dashboard</h2>
 </body>
 </html>
