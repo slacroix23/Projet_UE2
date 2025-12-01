@@ -81,7 +81,7 @@
         © <?php echo date("d/m/Y") ?> - My Portfolio
         <footer>
             <!-- lien pour contacter Alex -->
-            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
+            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php?id=<?= $personne['id'] ?>">
                 <!-- Bouton nous contacter -->
                 <button class="boutonn">Contact me</button>
             </a>

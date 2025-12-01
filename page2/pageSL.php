@@ -14,7 +14,7 @@
             '' // mot de passe vide en local
         );
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $pdo->query('SELECT * FROM nous WHERE id=1');
+        $stmt = $pdo->query('SELECT * FROM nous WHERE id=3');
         $personne = $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         die("Erreur de connexion:" . $e->getMessage());
@@ -78,7 +78,7 @@
         © <?php echo date("d/m/Y") ?> - My Portfolio
         <footer>
             <!-- Bouton pour nous contacter -->
-            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php">
+            <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php?id=<?= $personne['id'] ?>">
                 <button class="boutonn">Contact me</button>
             </a>
             <a class="cadenas" href="http://localhost/projet_ue2/dashboard/login.php">
