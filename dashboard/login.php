@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Vérifier le mot de passe (si non hashé)
         if ($pwd === $account['password']) {
             // Identifiants corrects → redirection
-            header("Location: admin.php");
+            header("Location: dashboard.php");
             exit;
         } else {
             $erreurs[] = "Mot de passe incorrect.";
