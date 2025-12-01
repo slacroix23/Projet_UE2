@@ -27,7 +27,7 @@
     );
     $pdo->setAttribute(attribute: PDO::ATTR_ERRMODE, value: PDO::ERRMODE_EXCEPTION);
 
-    // Récupère les contacts
+    //récupère les contacts
     $sql = "SELECT id, nom, email FROM nous ORDER BY nom";
     $stmt = $pdo->query($sql);
     $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
