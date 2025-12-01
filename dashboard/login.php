@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login to dashboard</title>
     <?php
     // Connexion à la BDD (à adapter)
     $pdo = new PDO(
@@ -14,7 +14,7 @@
     $pdo->setAttribute(attribute: PDO::ATTR_ERRMODE, value: PDO::ERRMODE_EXCEPTION);
 
     // On récupère les contacts
-    $sql = "SELECT id, nom, email FROM nous ORDER BY nom";
+    $sql = "SELECT login, password, FROM login ORDER BY nom";
     $stmt = $pdo->query($sql);
     $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
