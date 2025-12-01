@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php
-    // Connexion à la BDD (à adapter)
+    // Connexion à la BDD
     $pdo = new PDO(
         'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
         'root',

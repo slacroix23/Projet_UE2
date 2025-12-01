@@ -19,7 +19,7 @@
 
 
     <?php
-    // Connexion à la BDD (à adapter)
+    // Connexion à la BDD
     $pdo = new PDO(
         'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
         'root',
@@ -27,7 +27,7 @@
     );
     $pdo->setAttribute(attribute: PDO::ATTR_ERRMODE, value: PDO::ERRMODE_EXCEPTION);
 
-    // On récupère les contacts
+    // Récupère les contacts
     $sql = "SELECT id, nom, email FROM nous ORDER BY nom";
     $stmt = $pdo->query($sql);
     $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
