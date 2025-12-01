@@ -84,7 +84,10 @@ label small {
     color: var(--text-muted);
 }
 
-input {
+input[type="text"],
+input[type="email"],
+select,
+textarea{
     width: 100%;
     border-radius: 10px;
     border: 1px solid var(--border);
@@ -98,13 +101,16 @@ input {
 }
 
 input[type="text"]::placeholder,
-input[type="password"]::placeholder,
 input[type="email"]::placeholder,
 textarea::placeholder {
     color: #9ca3af;
 }
 
-input {
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
     outline: none;
     border-color: var(--primary);
     background-color: #ffffff;
