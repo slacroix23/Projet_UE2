@@ -87,9 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ]);
 
         $succes = true;
-
-        // Option : vider les champs du formulaire après succès
-        
     }
 }
 
