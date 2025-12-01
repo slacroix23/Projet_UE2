@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $succes = true;
 
         // Option : vider les champs du formulaire après succès
-        $nom = $email = $entreprise = $message = "";
+        
     }
 }
 
@@ -119,10 +119,28 @@ if (!empty($erreurs)) {
 // Afficher le succès
 if ($succes) {
     echo '<div class="resultat">';
-    echo '<h2>✓ Message sent !</h2>';
-    echo "<p><strong>To :</strong> " . htmlspecialchars($personne['nom']) . " (" . htmlspecialchars($personne['email']) . ")</p>";
+    echo '<h2>✓ Message sent successfully!</h2>';
+
+    // Destinataire
+    echo "<p><strong>Message sent to :</strong> " 
+        . htmlspecialchars($personne['nom']) 
+        . " (" . htmlspecialchars($personne['email']) . ")</p>";
+
+    // Infos sur l’expéditeur
+    echo "<p><strong>From :</strong> " 
+        . htmlspecialchars($nom) 
+        . " (" . htmlspecialchars($email) . ")</p>";
+
+    echo "<p><strong>Company :</strong> " 
+        . htmlspecialchars($entreprise) . "</p>";
+
+    // Message envoyé
+    echo "<p><strong>Message :</strong><br>" 
+        . nl2br(htmlspecialchars($message)) . "</p>";
+
     echo '</div>';
 }
+
 ?>
 
 <form method="POST" action="">
