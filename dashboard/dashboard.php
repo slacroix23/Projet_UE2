@@ -71,7 +71,7 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 
-    <h1>Dashboard - Gestion des Contacts</h1>
+    <h1>Dashboard</h1>
 
     <!-- ------------------- -->
     <!--   FORMULAIRE AJOUT  -->
