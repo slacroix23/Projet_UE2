@@ -70,8 +70,12 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-
+<div>
+    <a href="http://localhost/projet_ue2/main/index.html">
+        <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
+    </a>
     <h1>Dashboard</h1>
+</div>
 
     <!-- ------------------- -->
     <!--   FORMULAIRE AJOUT  -->
