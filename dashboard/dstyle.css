@@ -1,3 +1,17 @@
+:root {
+  --bg-page: #f5f1e8;           /* beige clair */
+  --bg-card: #ffffff;           /* cartes blanches */
+  --text-main: #292827;         /* texte principal */
+  --text-light: #ffffff;        /* texte sur fond foncé */
+  --accent-dark: #162237;       /* bleu marine intense */
+  --accent-gold: #d4a259;       /* doré */
+  --accent-gold-dark: #b7802f;  /* doré foncé hover */
+  --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.18);
+  --radius-card: 24px;
+  --radius-button: 999px;
+  --transition-fast: 0.2s ease;
+}
+
 h1{
   text-align: center;
   font-size: 30px;
@@ -7,15 +21,4 @@ h1{
   font-family: "Playfair Display", serif;
 }
 
-.bandeau {
-  background: linear-gradient(90deg, #111827, var(--accent-dark));
-  color: var(--text-light);
-  padding: 16px 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.6);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
+
