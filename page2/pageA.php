@@ -85,9 +85,6 @@
                 <!-- Bouton nous contacter -->
                 <button class="boutonn">Contact me</button>
             </a>
-            <a class="cadenas" href="http://localhost/projet_ue2/dashboard/login.php">
-                <img src="../image/cadenas.png" alt="bouton de login" width="40">
-            </a>
         </footer>
 </body>
 
