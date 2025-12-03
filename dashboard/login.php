@@ -2,6 +2,9 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// 1️⃣ Démarrer la session pour pouvoir stocker le token
+session_start();
+
 try {
     $pdo = new PDO(
         'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
@@ -20,7 +23,21 @@ $erreurs  = [];   // tableau d'erreurs
 $messages = [];   // messages d'info (ex : mot de passe OK HIBP)
 $user     = "";   // pour préremplir le champ
 
+// 2️⃣ Générer un token CSRF s'il n'existe pas encore
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // 64 caractères hex aléatoires
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // 3️⃣ Vérifier le token CSRF avant de traiter quoi que ce soit
+    if (
+        !isset($_POST['csrf_token']) ||
+        !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])
+    ) {
+        // hash_equals pour éviter les attaques par timing
+        die("⛔ Requête non autorisée (protection CSRF).");
+    }
 
     $user = trim($_POST['user'] ?? '');
     $pwd  = trim($_POST['pwd'] ?? '');
@@ -88,6 +105,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <label for="pwd">Password * :</label>
         <input type="password" id="pwd" name="pwd" required>
+
+        <!-- 4️⃣ On envoie aussi le token CSRF côté client -->
+        <input type="hidden" name="csrf_token"
+               value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
         <button type="submit">Connexion</button>
 

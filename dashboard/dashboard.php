@@ -65,13 +65,15 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="UTF-8">
+    <!-- 🔹 Important pour le format téléphone -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="dstyle.css">
 </head>
 
 <body>
-<div>
-    <a href="http://localhost/projet_ue2/main/index.html">
+<div class="top-bar">
+    <a href="http://localhost/projet_ue2/main/index.html" class="back-link">
         <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
     </a>
     <h1>Dashboard</h1>
@@ -81,7 +83,7 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!--   FORMULAIRE AJOUT  -->
     <!-- ------------------- -->
     <h2>Ajouter une personne</h2>
-    <form method="POST">
+    <form method="POST" class="form-ajout">
         <input type="text" name="nom" placeholder="Nom" required>
         <input type="email" name="email" placeholder="Email" required>
         <input type="number" name="Age" placeholder="Âge">
@@ -97,53 +99,56 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- ------------------- -->
     <h2>Liste des personnes</h2>
 
-    <table border="1" cellpadding="10">
-        <tr>
-            <th>ID</th>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Age</th>
-            <th>Qualities</th>
-            <th>Skills</th>
-            <th>Experience</th>
-            <th>Passions</th>
-            <th>Actions</th>
-        </tr>
-
-        <?php foreach ($contacts as $c): ?>
+    <!-- 🔹 Wrapper pour rendre le tableau scrollable sur petit écran -->
+    <div class="table-wrapper">
+        <table border="1" cellpadding="10">
             <tr>
-                <td><?= htmlspecialchars($c['id']) ?></td>
-                <td><?= htmlspecialchars($c['nom']) ?></td>
-                <td><?= htmlspecialchars($c['email']) ?></td>
-                <td><?= htmlspecialchars($c['Age']) ?></td>
-                <td><?= htmlspecialchars($c['Qualities']) ?></td>
-                <td><?= htmlspecialchars($c['Skills']) ?></td>
-                <td><?= htmlspecialchars($c['Experience']) ?></td>
-                <td><?= htmlspecialchars($c['Passions']) ?></td>
-
-                <td>
-                    <!-- FORMULAIRE DE MODIFICATION -->
-                    <form method="POST" style="display:inline-block;">
-                        <input type="hidden" name="id" value="<?= $c['id'] ?>">
-                        <input type="text" name="nom" value="<?= htmlspecialchars($c['nom']) ?>">
-                        <input type="email" name="email" value="<?= htmlspecialchars($c['email']) ?>">
-                        <input type="number" name="Age" value="<?= htmlspecialchars($c['Age']) ?>">
-                        <input type="text" name="Qualities" value="<?= htmlspecialchars($c['Qualities']) ?>">
-                        <input type="text" name="Skills" value="<?= htmlspecialchars($c['Skills']) ?>">
-                        <input type="text" name="Experience" value="<?= htmlspecialchars($c['Experience']) ?>">
-                        <input type="text" name="Passions" value="<?= htmlspecialchars($c['Passions']) ?>">
-                        <button type="submit" name="update">Modifier</button>
-                    </form>
-
-                    <!-- FORMULAIRE DE SUPPRESSION -->
-                    <form method="POST" style="display:inline-block;">
-                        <input type="hidden" name="id" value="<?= $c['id'] ?>">
-                        <button type="submit" name="delete" onclick="return confirm('Supprimer ?')">Supprimer</button>
-                    </form>
-                </td>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Qualities</th>
+                <th>Skills</th>
+                <th>Experience</th>
+                <th>Passions</th>
+                <th>Actions</th>
             </tr>
-        <?php endforeach; ?>
-    </table>
+
+            <?php foreach ($contacts as $c): ?>
+                <tr>
+                    <td><?= htmlspecialchars($c['id']) ?></td>
+                    <td><?= htmlspecialchars($c['nom']) ?></td>
+                    <td><?= htmlspecialchars($c['email']) ?></td>
+                    <td><?= htmlspecialchars($c['Age']) ?></td>
+                    <td><?= htmlspecialchars($c['Qualities']) ?></td>
+                    <td><?= htmlspecialchars($c['Skills']) ?></td>
+                    <td><?= htmlspecialchars($c['Experience']) ?></td>
+                    <td><?= htmlspecialchars($c['Passions']) ?></td>
+
+                    <td class="actions-cell">
+                        <!-- FORMULAIRE DE MODIFICATION -->
+                        <form method="POST" class="form-inline">
+                            <input type="hidden" name="id" value="<?= $c['id'] ?>">
+                            <input type="text" name="nom" value="<?= htmlspecialchars($c['nom']) ?>">
+                            <input type="email" name="email" value="<?= htmlspecialchars($c['email']) ?>">
+                            <input type="number" name="Age" value="<?= htmlspecialchars($c['Age']) ?>">
+                            <input type="text" name="Qualities" value="<?= htmlspecialchars($c['Qualities']) ?>">
+                            <input type="text" name="Skills" value="<?= htmlspecialchars($c['Skills']) ?>">
+                            <input type="text" name="Experience" value="<?= htmlspecialchars($c['Experience']) ?>">
+                            <input type="text" name="Passions" value="<?= htmlspecialchars($c['Passions']) ?>">
+                            <button type="submit" name="update">Modifier</button>
+                        </form>
+
+                        <!-- FORMULAIRE DE SUPPRESSION -->
+                        <form method="POST" class="form-inline">
+                            <input type="hidden" name="id" value="<?= $c['id'] ?>">
+                            <button type="submit" name="delete" onclick="return confirm('Supprimer ?')">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
 
 </body>
 

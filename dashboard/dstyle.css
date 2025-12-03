@@ -1,24 +1,120 @@
-:root {
-  --bg-page: #f5f1e8;           /* beige clair */
-  --bg-card: #ffffff;           /* cartes blanches */
-  --text-main: #292827;         /* texte principal */
-  --text-light: #ffffff;        /* texte sur fond foncé */
-  --accent-dark: #162237;       /* bleu marine intense */
-  --accent-gold: #d4a259;       /* doré */
-  --accent-gold-dark: #b7802f;  /* doré foncé hover */
-  --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.18);
-  --radius-card: 24px;
-  --radius-button: 999px;
-  --transition-fast: 0.2s ease;
+* {
+    box-sizing: border-box;
 }
 
-h1{
-  text-align: center;
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-family: "Playfair Display", serif;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background: #f5f5f5;
 }
 
+/* Top bar */
+.top-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
+.top-bar h1 {
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.back-link img {
+    display: block;
+}
+
+/* Titres */
+h2 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+/* Formulaire d'ajout */
+.form-ajout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-ajout input,
+.form-ajout button {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.95rem;
+}
+
+/* Table responsive */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* 🔹 Permet le scroll horizontal sur téléphone */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 0.85rem;
+}
+
+th, td {
+    padding: 6px;
+    text-align: left;
+}
+
+th {
+    background: #222;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+/* Actions (modifier/supprimer) */
+.actions-cell {
+    min-width: 220px;
+}
+
+.form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.form-inline input {
+    flex: 1 1 100%;
+    padding: 4px;
+    font-size: 0.8rem;
+}
+
+.form-inline button {
+    padding: 4px 6px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* 🔻 Adaptation spéciale pour les petits écrans */
+@media (max-width: 600px) {
+    body {
+        padding: 8px;
+    }
+
+    table {
+        font-size: 0.75rem;
+    }
+
+    th, td {
+        padding: 4px;
+    }
+
+    .form-inline input {
+        font-size: 0.75rem;
+    }
+
+    .form-inline button {
+        width: 100%;
+    }
+}
