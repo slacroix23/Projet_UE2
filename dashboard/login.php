@@ -60,34 +60,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"> <!-- Déclaration du document HTML, en français -->
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Formulaires/Fstyle.css">
-    <title>Login to dashboard</title>
+    <meta charset="UTF-8"> <!-- Encodage des caractères (UTF-8 pour les accents, etc.) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adaptation aux écrans mobiles -->
+    <link rel="stylesheet" href="../Formulaires/Fstyle.css"> <!-- Lien vers la feuille de style externe -->
+    <title>Login to dashboard</title> <!-- Titre de la page -->
 </head>
 
 <body>
+    <!-- Bouton de retour vers la page principale -->
     <div>
         <a href="http://localhost/projet_ue2/main/index.html">
             <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
         </a>
     </div>
 
-    <h1>Login to Dashboard</h1>
+    <h1>Login to Dashboard</h1> <!-- Titre principal de la page -->
 
-    <form method="POST" action="">
+    <!-- Formulaire de connexion -->
+    <form method="POST" action=""> <!-- Envoi des données en POST (vers la même page ici) -->
+        <!-- Champ du nom d'utilisateur -->
         <label for="user">Username * :</label>
         <input type="text" id="user" name="user"
                value="<?php echo htmlspecialchars($user ?? ''); ?>" required>
+        <!-- Le champ est pré-rempli si une valeur existe, et "required" le rend obligatoire -->
 
+        <!-- Champ du mot de passe -->
         <label for="pwd">Password * :</label>
         <input type="password" id="pwd" name="pwd" required>
+        <!-- Le type "password" masque le texte saisi -->
 
-        <button type="submit">Connexion</button>
+        <button type="submit">Connexion</button> <!-- Bouton pour envoyer le formulaire -->
 
+        <!-- Affichage des erreurs si elles existent -->
         <?php if (!empty($erreurs)): ?>
             <div style="color:red; margin-top:10px;">
                 <?php foreach ($erreurs as $err): ?>
@@ -96,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         <?php endif; ?>
 
-        <p><small>* required field</small></p>
+        <p><small>* required field</small></p> <!-- Petit texte d'information -->
     </form>
 </body>
 </html>
