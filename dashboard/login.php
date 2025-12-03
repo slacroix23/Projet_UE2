@@ -13,77 +13,103 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
-$erreur = "";
+// On inclut HIBP
+require_once 'hibp.php';
+
+$erreurs  = [];   // tableau d'erreurs
+$messages = [];   // messages d'info (ex : mot de passe OK HIBP)
+$user     = "";   // pour préremplir le champ
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $user = trim($_POST['user'] ?? '');
     $pwd  = trim($_POST['pwd'] ?? '');
 
-    // Récupérer l'utilisateur
-    $stmt = $pdo->prepare("SELECT * FROM login WHERE login = :login");
-    $stmt->execute(['login' => $user]);
-    $account = $stmt->fetch(PDO::FETCH_ASSOC);
+    // 1) Vérification HIBP du mot de passe
+    try {
+        $check = isPwnedPasswordPHP($pwd);
 
-    if ($account) {
-        // Vérifier le mot de passe hashé
-        if (password_verify($pwd, $account['password'])) {
-            header("Location: dashboard.php");
-            exit;
+        if ($check['pwned']) {
+            // Mot de passe trouvé dans des fuites → on bloque
+            $erreurs[] = "⚠️ Ce mot de passe a été trouvé dans des fuites de données ({$check['count']} fois). "
+                       . "Merci d'en choisir un plus sûr.";
         } else {
-            $erreur = "Mot de passe incorrect.";
+            // Mot de passe pas trouvé dans HIBP → simple message d'info
+            $messages[] = "✅ Ce mot de passe n'apparaît pas dans la base Have I Been Pwned.";
         }
-    } else {
-        $erreur = "Nom d'utilisateur introuvable.";
+    } catch (Exception $e) {
+        $erreurs[] = "Erreur lors de la vérification du mot de passe : " . htmlspecialchars($e->getMessage());
+    }
+
+    // 2) Si pas d'erreur HIBP, on continue la vérif login / mot de passe
+    if (empty($erreurs)) {
+        // Récupérer l'utilisateur
+        $stmt = $pdo->prepare("SELECT * FROM login WHERE login = :login");
+        $stmt->execute(['login' => $user]);
+        $account = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($account) {
+            // Vérifier le mot de passe hashé
+            if (password_verify($pwd, $account['password'])) {
+                header("Location: dashboard.php");
+                exit;
+            } else {
+                $erreurs[] = "Mot de passe incorrect.";
+            }
+        } else {
+            $erreurs[] = "Nom d'utilisateur introuvable.";
+        }
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="fr"> <!-- Déclaration du document HTML, en français -->
-
+<html lang="fr">
 <head>
-    <meta charset="UTF-8"> <!-- Encodage des caractères (UTF-8 pour les accents, etc.) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adaptation aux écrans mobiles -->
-    <link rel="stylesheet" href="../Formulaires/Fstyle.css"> <!-- Lien vers la feuille de style externe -->
-    <title>Login to dashboard</title> <!-- Titre de la page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Formulaires/Fstyle.css">
+    <title>Login to dashboard</title>
 </head>
 
 <body>
-    <!-- Bouton de retour vers la page principale -->
     <div>
         <a href="http://localhost/projet_ue2/main/index.html">
             <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
         </a>
     </div>
 
-    <h1>Login to Dashboard</h1> <!-- Titre principal de la page -->
+    <h1>Login to Dashboard</h1>
 
-    <!-- Formulaire de connexion -->
-    <form method="POST" action=""> <!-- Envoi des données en POST (vers la même page ici) -->
-        <!-- Champ du nom d'utilisateur -->
+    <form method="POST" action="">
         <label for="user">Username * :</label>
         <input type="text" id="user" name="user"
-               value="<?php echo htmlspecialchars($user ?? ''); ?>" required>
-        <!-- Le champ est pré-rempli si une valeur existe, et "required" le rend obligatoire -->
+               value="<?php echo htmlspecialchars($user); ?>" required>
 
-        <!-- Champ du mot de passe -->
         <label for="pwd">Password * :</label>
         <input type="password" id="pwd" name="pwd" required>
-        <!-- Le type "password" masque le texte saisi -->
 
-        <button type="submit">Connexion</button> <!-- Bouton pour envoyer le formulaire -->
+        <button type="submit">Connexion</button>
 
-        <!-- Affichage des erreurs si elles existent -->
+        <!-- Affichage des erreurs -->
         <?php if (!empty($erreurs)): ?>
             <div style="color:red; margin-top:10px;">
                 <?php foreach ($erreurs as $err): ?>
-                    <p><?php echo $err; ?></p>
+                    <p><?php echo htmlspecialchars($err); ?></p>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
 
-        <p><small>* required field</small></p> <!-- Petit texte d'information -->
+        <!-- Affichage des messages d'info (mot de passe OK HIBP, etc.) -->
+        <?php if (!empty($messages)): ?>
+            <div style="color:green; margin-top:10px;">
+                <?php foreach ($messages as $msg): ?>
+                    <p><?php echo htmlspecialchars($msg); ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <p><small>* required field</small></p>
     </form>
 </body>
 </html>
