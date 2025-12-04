@@ -8,12 +8,12 @@
     --text-main: #111827;
     --text-muted: #6b7280;
     --bg: #f3f4f6;
-    --white: #ffffff;
+    --white: #fff;
     --border: #e5e7eb;
     --radius-lg: 14px;
     --radius-md: 10px;
     --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
-    --transition: 0.18s ease-out;
+    --transition: .18s ease-out;
 }
 
 *,
@@ -27,7 +27,7 @@
 /* --------- Page globale --------- */
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: radial-gradient(circle at top left, #eef2ff 0, #f9fafb 40%, #e5e7eb 100%);
+    background: radial-gradient(circle at top left,#eef2ff 0,#f9fafb 40%,#e5e7eb 100%);
     color: var(--text-main);
     min-height: 100vh;
     padding: 40px 16px;
@@ -37,22 +37,21 @@ body {
 h1 {
     text-align: center;
     font-size: 2.2rem;
-    letter-spacing: 0.03em;
-    margin-bottom: 10px;
-    color: #111827;
+    letter-spacing: .03em;
+    margin-bottom: 14px;
 }
 
 h1::after {
     content: "";
     display: block;
-    margin: 10px auto 0;
     width: 60px;
     height: 3px;
+    margin: 10px auto 0;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    background: linear-gradient(90deg,var(--primary),var(--primary-light));
 }
 
-/* --------- Conteneur général (formulaire + messages) --------- */
+/* --------- Conteneurs --------- */
 form,
 .erreur,
 .resultat {
@@ -60,23 +59,22 @@ form,
     margin: 18px auto;
 }
 
-/* --------- Cartes (erreur / succès / formulaire) --------- */
+/* --------- Formulaire --------- */
 form {
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255,255,255,.92);
     backdrop-filter: blur(14px);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
     padding: 26px 22px 24px;
-    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(148,163,184,.25);
 }
 
-/* --------- Labels & inputs --------- */
+/* --------- Labels & Inputs --------- */
 label {
     display: block;
-    font-size: 0.95rem;
     font-weight: 600;
+    font-size: .95rem;
     margin-bottom: 6px;
-    color: var(--text-main);
 }
 
 label small {
@@ -84,135 +82,129 @@ label small {
     color: var(--text-muted);
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
+input,
 select,
-textarea{
+textarea {
     width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 16px;
     border-radius: 10px;
     border: 1px solid var(--border);
-    padding: 10px 12px;
-    font-size: 0.98rem;
-    font-family: inherit;
+    background: #f9fafb;
     color: var(--text-main);
-    background-color: #f9fafb;
-    transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition), transform 0.1s ease-out;
-    margin-bottom: 16px;
+    font: inherit;
+    font-size: .98rem;
+    transition: border-color var(--transition),
+                box-shadow var(--transition),
+                background-color var(--transition),
+                transform .1s ease-out;
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
+input::placeholder,
 textarea::placeholder {
     color: #9ca3af;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
+input:focus,
 select:focus,
 textarea:focus {
-    outline: none;
+    outline: 0;
+    background: #fff;
     border-color: var(--primary);
-    background-color: #ffffff;
-    box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.20);
     transform: translateY(-1px);
+    box-shadow: 0 0 0 1px rgba(79,70,229,.2);
 }
 
-select {
-    cursor: pointer;
-}
-
-/* --------- Zone de texte --------- */
 textarea {
     resize: vertical;
     min-height: 120px;
-    line-height: 1.4;
 }
 
 /* --------- Bouton --------- */
 button[type="submit"] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    margin-top: 6px;
-    border-radius: 999px;
-    border: none;
     padding: 11px 18px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    color: #ffffff;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.35);
-    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.12s ease-out;
+    letter-spacing: .03em;
+    color: #fff;
+    background: linear-gradient(135deg,var(--primary),var(--primary-light));
+    box-shadow: 0 10px 25px rgba(79,70,229,.35);
+    transition: transform .12s ease-out,
+                filter .12s ease-out,
+                box-shadow .12s ease-out;
 }
 
 button[type="submit"]:hover {
     transform: translateY(-1px);
     filter: brightness(1.05);
-    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.45);
+    box-shadow: 0 15px 30px rgba(79,70,229,.45);
 }
 
 button[type="submit"]:active {
-    transform: translateY(1px) scale(0.99);
-    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+    transform: translateY(1px) scale(.99);
+    box-shadow: 0 6px 16px rgba(79,70,229,.35);
 }
 
 /* --------- Messages d’erreur --------- */
+.erreur,
+.resultat {
+    padding: 14px 16px 12px;
+    border-radius: var(--radius-md);
+    font-size: .92rem;
+}
+
 .erreur {
     background: #fef2f2;
-    border: 1px solid rgba(248, 113, 113, 0.7);
+    border: 1px solid rgba(248,113,113,.7);
     color: #991b1b;
-    border-radius: var(--radius-md);
-    padding: 14px 16px 12px;
-    font-size: 0.92rem;
 }
 
 .erreur h3 {
     margin-bottom: 6px;
-    font-size: 0.96rem;
+    font-size: .96rem;
 }
 
 .erreur ul {
-    list-style: disc;
     margin-left: 18px;
+    list-style: disc;
 }
 
-.erreur li+li {
+.erreur li + li {
     margin-top: 2px;
 }
 
 /* --------- Message de succès --------- */
 .resultat {
     background: #ecfdf3;
-    border: 1px solid rgba(34, 197, 94, 0.7);
+    border: 1px solid rgba(34,197,94,.7);
     color: #14532d;
-    border-radius: var(--radius-md);
     padding: 16px 18px 14px;
-    font-size: 0.95rem;
 }
 
 .resultat h2 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 6px;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
 }
 
 .resultat p {
     margin-bottom: 4px;
 }
 
-/* --------- Champs obligatoires note --------- */
+/* --------- Note champs obligatoires --------- */
 p small {
     display: block;
     max-width: 520px;
     margin: 6px auto 0;
     text-align: left;
-    font-size: 0.8rem;
+    font-size: .8rem;
     color: var(--text-muted);
 }
 
@@ -221,7 +213,6 @@ p small {
     body {
         padding: 60px 24px;
     }
-
     form {
         padding: 28px 26px 24px;
     }
