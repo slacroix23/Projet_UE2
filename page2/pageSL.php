@@ -89,6 +89,7 @@
     <footer>
         <!-- Copyright dynamique -->
         © <?php echo date("d/m/Y") ?> - My Portfolio
+        </footer>
         <footer>
             <!-- Bouton pour contacter la personne-->
             <a href="http://localhost/projet_ue2/formulaires/ME_contacter.php?id=<?= $personne['id'] ?>">
