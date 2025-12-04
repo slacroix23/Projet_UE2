@@ -1,7 +1,5 @@
 <?php
-// -----------------------
 //  CONNEXION BDD
-// -----------------------
 $pdo = new PDO(
     "mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4",
     "root",
@@ -9,9 +7,7 @@ $pdo = new PDO(
 );
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// -----------------------
 //  AJOUTER
-// -----------------------
 if (isset($_POST['add'])) {
     $sql = "INSERT INTO nous (nom, email, Age, Qualities, Skills, Experience, Passions) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
@@ -26,9 +22,7 @@ if (isset($_POST['add'])) {
     ]);
 }
 
-// -----------------------
 //  MODIFIER
-// -----------------------
 if (isset($_POST['update']) && !empty($_POST['id'])) {
     $sql = "UPDATE nous SET nom=?, email=?, Age=?, Qualities=?, Skills=?, Experience=?, Passions=? WHERE id=?";
     $stmt = $pdo->prepare($sql);
@@ -44,18 +38,14 @@ if (isset($_POST['update']) && !empty($_POST['id'])) {
     ]);
 }
 
-// -----------------------
 //  SUPPRIMER
-// -----------------------
 if (isset($_POST['delete']) && !empty($_POST['id'])) {
     $sql = "DELETE FROM nous WHERE id=?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$_POST['id']]);
 }
 
-// -----------------------
 //  RECUPERATION DES DONNÉES
-// -----------------------
 $stmt = $pdo->query("SELECT * FROM nous ORDER BY id DESC");
 $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -78,10 +68,7 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </a>
     <h1>Dashboard</h1>
 </div>
-
-    <!-- ------------------- -->
     <!--   FORMULAIRE AJOUT  -->
-    <!-- ------------------- -->
     <h2>Ajouter une personne</h2>
     <form method="POST" class="form-ajout">
         <input type="text" name="nom" placeholder="Nom" required>
@@ -94,12 +81,11 @@ $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <button type="submit" name="add">Ajouter</button>
     </form>
 
-    <!-- ------------------- -->
-    <!--   LISTE DES PERSONNES -->
-    <!-- ------------------- -->
+   
+<!--   LISTE DES PERSONNES -->
     <h2>Liste des personnes</h2>
 
-    <!-- 🔹 Wrapper pour rendre le tableau scrollable sur petit écran -->
+    <!--  Wrapper pour rendre le tableau scrollable sur petit écran -->
     <div class="table-wrapper">
         <table border="1" cellpadding="10">
             <tr>
