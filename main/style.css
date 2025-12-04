@@ -1,67 +1,68 @@
 /* ========== IMPORT POLICES ========== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap'); 
+/* Import des polices Playfair Display pour titres et Inter pour texte normal */
 
 /* ========== VARIABLES GLOBALES ========== */
 :root {
-    --bg-page: #f5f1e8;
-    --bg-card: #fff;
-    --text-main: #292827;
-    --text-light: #fff;
-    --accent-dark: #162237;
-    --accent-gold: #d4a259;
-    --accent-gold-dark: #b7802f;
-    --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.18);
-    --radius-card: 24px;
-    --radius-button: 999px;
-    --transition-fast: 0.2s ease;
+    --bg-page: #f5f1e8;             /* Couleur de fond de la page */
+    --bg-card: #fff;                 /* Couleur de fond des cartes */
+    --text-main: #292827;            /* Couleur du texte principal */
+    --text-light: #fff;              /* Texte clair pour titres sur fond sombre */
+    --accent-dark: #162237;          /* Couleur accent sombre */
+    --accent-gold: #d4a259;          /* Couleur accent dorée */
+    --accent-gold-dark: #b7802f;     /* Variante foncée du doré */
+    --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.18); /* Ombre douce */
+    --radius-card: 24px;             /* Bordure arrondie des cartes */
+    --radius-button: 999px;          /* Bordure arrondie des boutons */
+    --transition-fast: 0.2s ease;    /* Durée de transition rapide */
 }
 
 /* ========== BANDEAU HEADER ========== */
 header.bandeau {
-    background: linear-gradient(90deg, #111827, var(--accent-dark));
+    background: linear-gradient(90deg, #111827, var(--accent-dark)); /* Dégradé fond header */
     color: var(--text-light);
     padding: 16px 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: 25px;                        /* Espace entre logo et titre */
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.6);
-    position: sticky;
+    position: sticky;                  /* Reste collé en haut */
     top: 0;
-    z-index: 10;
+    z-index: 10;                       /* Priorité d’affichage */
 }
 
 header.bandeau img {
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);    /* Image blanche */
     transition: opacity var(--transition-fast);
 }
 
 header.bandeau img:hover {
-    opacity: 0.6;
+    opacity: 0.6;                       /* Effet au survol */
 }
 
 header.bandeau h1 {
     font-family: "Playfair Display", serif;
     font-size: 28px;
     letter-spacing: 0.06em;
-    text-transform: uppercase;
+    text-transform: uppercase;          /* Texte en majuscules */
 }
 
 /* ========== LIENS ========== */
 a {
-    text-decoration: none;
-    color: inherit;
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    color: inherit;        /* Hérite de la couleur parent */
 }
 
-/* ========== GRID PRINCIPALE ========== */
+/* ========== GRID PRINCIPALE POUR LES CARTES ========== */
 .container {
     max-width: 1200px;
     margin: 50px auto 70px;
     padding: 0 24px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
     gap: 40px;
-    justify-items: center;
+    justify-items: center; /* Centre les cartes dans chaque cellule */
 }
 
 /* ========== CARTES PERSONNES ========== */
@@ -79,7 +80,7 @@ a {
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-6px); /* Légère remontée au survol */
     box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
     border-color: rgba(212, 162, 89, 0.6);
 }

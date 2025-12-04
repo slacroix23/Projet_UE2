@@ -1,10 +1,12 @@
 <?php
+// 🔧 Affichage des erreurs (utile en développement)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// 1️⃣ Démarrer la session pour pouvoir stocker le token
+// 🟦 1) Démarrer la session (nécessaire pour stocker le token CSRF)
 session_start();
 
+// 🟦 Connexion PDO sécurisée
 try {
     $pdo = new PDO(
         'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
@@ -16,60 +18,70 @@ try {
     die("Erreur : " . $e->getMessage());
 }
 
-// On inclut HIBP
+// 🟦 Inclusion de la fonction Have I Been Pwned
 require_once 'hibp.php';
 
-$erreurs  = [];   // tableau d'erreurs
-$messages = [];   // messages d'info (ex : mot de passe OK HIBP)
-$user     = "";   // pour préremplir le champ
+$erreurs  = [];   // Stockage des erreurs
+$messages = [];   // Stockage des messages d'information
+$user     = "";   // Sera utilisé pour préremplir la zone "Username"
 
-// 2️⃣ Générer un token CSRF s'il n'existe pas encore
+// 🟦 2) Générer un token CSRF si inexistant
 if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // 64 caractères hex aléatoires
+    // random_bytes → source cryptographiquement sûre
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
 
+// 🟦 Traitement du formulaire POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // 3️⃣ Vérifier le token CSRF avant de traiter quoi que ce soit
+    // 🟦 3) Vérification CSRF AVANT tout traitement !
     if (
         !isset($_POST['csrf_token']) ||
         !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])
     ) {
-        // hash_equals pour éviter les attaques par timing
+        // hash_equals évite les attaques par timing
         die("⛔ Requête non autorisée (protection CSRF).");
     }
 
+    // Variables sécurisées
     $user = trim($_POST['user'] ?? '');
     $pwd  = trim($_POST['pwd'] ?? '');
 
-    // 1) Vérification HIBP du mot de passe
+    // 🟦 1) Vérification du mot de passe via HIBP
     try {
         $check = isPwnedPasswordPHP($pwd);
 
         if ($check['pwned']) {
-            // Mot de passe trouvé dans des fuites → on bloque
-            $erreurs[] = "⚠️ Ce mot de passe a été trouvé dans des fuites de données ({$check['count']} fois). "
-                       . "Merci d'en choisir un plus sûr.";
+            // Mot de passe présent dans une fuite → refus immédiat
+            $erreurs[] =
+                "⚠️ Ce mot de passe a été trouvé dans des fuites de données ({$check['count']} fois). "
+                . "Merci d'en choisir un plus sûr.";
         } else {
-            // Mot de passe pas trouvé dans HIBP → simple message d'info
+            // Mot de passe non trouvé → message informatif
             $messages[] = "✅ Ce mot de passe n'apparaît pas dans la base Have I Been Pwned.";
         }
     } catch (Exception $e) {
-        $erreurs[] = "Erreur lors de la vérification du mot de passe : " . htmlspecialchars($e->getMessage());
+        // En cas d’erreur API ou autre
+        $erreurs[] = "Erreur lors de la vérification du mot de passe : " 
+                   . htmlspecialchars($e->getMessage());
     }
 
-    // 2) Si pas d'erreur HIBP, on continue la vérif login / mot de passe
+    // 🟦 2) Si le mot de passe passe HIBP → validation l'utilisateur
     if (empty($erreurs)) {
-        // Récupérer l'utilisateur
+
+        // Récupération de l'utilisateur via requête préparée
         $stmt = $pdo->prepare("SELECT * FROM login WHERE login = :login");
         $stmt->execute(['login' => $user]);
         $account = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($account) {
-            // Vérifier le mot de passe hashé
+            // Comparaison du mot de passe avec son hash
             if (password_verify($pwd, $account['password'])) {
+
+                // 🟩 Connexion OK → redirection vers dashboard
                 header("Location: dashboard.php");
                 exit;
+
             } else {
                 $erreurs[] = "Mot de passe incorrect.";
             }
@@ -100,13 +112,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <form method="POST" action="">
         <label for="user">Username * :</label>
+        <!-- Préremplissage sécurisé -->
         <input type="text" id="user" name="user"
                value="<?php echo htmlspecialchars($user); ?>" required>
 
         <label for="pwd">Password * :</label>
         <input type="password" id="pwd" name="pwd" required>
 
-        <!-- 4️⃣ On envoie aussi le token CSRF côté client -->
+        <!-- 🟦 4) Envoi du token CSRF -->
         <input type="hidden" name="csrf_token"
                value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
 
@@ -121,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         <?php endif; ?>
 
-        <!-- Affichage des messages d'info (mot de passe OK HIBP, etc.) -->
+        <!-- Affichage des messages d'information -->
         <?php if (!empty($messages)): ?>
             <div style="color:green; margin-top:10px;">
                 <?php foreach ($messages as $msg): ?>

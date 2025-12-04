@@ -1,120 +1,122 @@
+/* ===== Reset et box-sizing ===== */
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Inclut padding et border dans la largeur totale des éléments */
 }
 
+/* ===== Style global du body ===== */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 10px;
-    background: #f5f5f5;
+    font-family: Arial, sans-serif; /* Police simple et lisible */
+    margin: 0;                     /* Supprime la marge par défaut */
+    padding: 10px;                 /* Espacement interne autour de la page */
+    background: #f5f5f5;           /* Fond gris clair */
 }
 
-/* Top bar */
+/* ===== Top bar (barre du haut) ===== */
 .top-bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+    display: flex;                 /* Utilise flexbox pour aligner horizontalement */
+    align-items: center;           /* Centrer verticalement les éléments */
+    gap: 10px;                     /* Espacement entre les éléments */
+    margin-bottom: 15px;           /* Marge sous la top bar */
 }
 
 .top-bar h1 {
-    font-size: 1.4rem;
-    margin: 0;
+    font-size: 1.4rem;             /* Taille du titre */
+    margin: 0;                      /* Supprime marge par défaut */
 }
 
 .back-link img {
-    display: block;
+    display: block;                /* Assure que l'image ne génère pas d'espace en ligne */
 }
 
-/* Titres */
+/* ===== Titres secondaires ===== */
 h2 {
-    font-size: 1.2rem;
-    margin-top: 20px;
+    font-size: 1.2rem;             /* Taille légèrement plus petite que h1 */
+    margin-top: 20px;              /* Marge au-dessus */
 }
 
-/* Formulaire d'ajout */
+/* ===== Formulaire d'ajout ===== */
 .form-ajout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
+    display: flex;                 /* Flexbox pour aligner les champs */
+    flex-wrap: wrap;               /* Permet aux éléments de passer à la ligne si besoin */
+    gap: 8px;                      /* Espacement entre champs */
+    margin-bottom: 20px;           /* Marge sous le formulaire */
 }
 
 .form-ajout input,
 .form-ajout button {
-    width: 100%;
-    padding: 8px;
-    font-size: 0.95rem;
+    width: 100%;                   /* Champs et boutons pleine largeur */
+    padding: 8px;                  /* Espacement interne */
+    font-size: 0.95rem;            /* Taille de police */
 }
 
-/* Table responsive */
+/* ===== Table responsive ===== */
 .table-wrapper {
-    width: 100%;
-    overflow-x: auto; /*  Permet le scroll horizontal sur téléphone */
+    width: 100%;                   /* Largeur maximale */
+    overflow-x: auto;              /* Scroll horizontal sur petits écrans */
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    font-size: 0.85rem;
+    width: 100%;                   /* Table pleine largeur */
+    border-collapse: collapse;     /* Supprime l’espace entre les bordures */
+    background: white;             /* Fond blanc pour table */
+    font-size: 0.85rem;            /* Texte légèrement petit */
 }
 
 th, td {
-    padding: 6px;
-    text-align: left;
+    padding: 6px;                  /* Espacement interne dans les cellules */
+    text-align: left;              /* Texte aligné à gauche */
 }
 
 th {
-    background: #222;
-    color: white;
-    position: sticky;
-    top: 0;
+    background: #222;              /* Fond sombre pour l’en-tête */
+    color: white;                  /* Texte blanc */
+    position: sticky;              /* Reste collé en haut lors du scroll */
+    top: 0;                        /* Position sticky en haut */
 }
 
-/* Actions (modifier/supprimer) */
+/* ===== Cellules des actions (modifier/supprimer) ===== */
 .actions-cell {
-    min-width: 220px;
+    min-width: 220px;              /* Assure espace suffisant pour boutons */
 }
 
 .form-inline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 4px;
+    display: flex;                 /* Flex pour aligner champs et boutons */
+    flex-wrap: wrap;               /* Passage à la ligne si nécessaire */
+    gap: 4px;                      /* Espacement entre les éléments */
+    margin-bottom: 4px;            /* Marge sous chaque ligne */
 }
 
 .form-inline input {
-    flex: 1 1 100%;
-    padding: 4px;
-    font-size: 0.8rem;
+    flex: 1 1 100%;                /* Occupe toute la largeur disponible */
+    padding: 4px;                  /* Padding interne */
+    font-size: 0.8rem;             /* Taille du texte plus petite */
 }
 
 .form-inline button {
-    padding: 4px 6px;
-    font-size: 0.8rem;
-    cursor: pointer;
+    padding: 4px 6px;              /* Padding réduit */
+    font-size: 0.8rem;             /* Taille du texte */
+    cursor: pointer;               /* Curseur pointeur pour les boutons */
 }
 
-/* Adaptation spéciale pour les petits écrans */
+/* ===== Adaptation spéciale pour les petits écrans ===== */
 @media (max-width: 600px) {
     body {
-        padding: 8px;
+        padding: 8px;              /* Réduit padding global */
     }
 
     table {
-        font-size: 0.75rem;
+        font-size: 0.75rem;        /* Texte plus petit pour table */
     }
 
     th, td {
-        padding: 4px;
+        padding: 4px;              /* Padding réduit dans les cellules */
     }
 
     .form-inline input {
-        font-size: 0.75rem;
+        font-size: 0.75rem;        /* Texte plus petit dans les champs inline */
     }
 
     .form-inline button {
-        width: 100%;
+        width: 100%;               /* Boutons inline pleine largeur sur mobile */
     }
 }
