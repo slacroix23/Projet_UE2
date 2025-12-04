@@ -50,7 +50,7 @@ h2 {
 /* Table responsive */
 .table-wrapper {
     width: 100%;
-    overflow-x: auto; /* 🔹 Permet le scroll horizontal sur téléphone */
+    overflow-x: auto; /*  Permet le scroll horizontal sur téléphone */
 }
 
 table {
@@ -96,7 +96,7 @@ th {
     cursor: pointer;
 }
 
-/* 🔻 Adaptation spéciale pour les petits écrans */
+/* Adaptation spéciale pour les petits écrans */
 @media (max-width: 600px) {
     body {
         padding: 8px;
