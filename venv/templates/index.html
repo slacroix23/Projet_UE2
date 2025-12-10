@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Faits sur les chats !</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🐱 Faits Aléatoires sur les Chats 🐱</h1>
+
+        <p id="catFact">Chargement d'un fait...</p>
+
+        <button onclick="fetchCatFact()">Voir un autre fait</button>
+    </div>
+
+    <script>
+        function fetchCatFact() {
+            document.getElementById('catFact').innerText = 'Chargement en cours...';
+            fetch('/Simon')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erreur réseau ou réponse non valide.');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('catFact').innerText = data.fact;
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération du fait:', error);
+                    document.getElementById('catFact').innerText = 'Impossible de récupérer le fait. Erreur: ' + error.message;
+                });
+        }
+
+        fetchCatFact();
+    </script>
+
+</body>
+
+</html>
