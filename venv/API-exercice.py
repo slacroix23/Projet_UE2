@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import requests
 
-app=Flask(name)
+app=Flask(__name__)
 
 @app.route("/")
 def hello_world():
@@ -11,7 +11,7 @@ def hello_world():
 def afficher_catfacts():
     url='https://catfact.ninja/fact'
     reponse = requests.get(url)
-    data=reponse.json
+    data=reponse.json()
     return data
 
 
