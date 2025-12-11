@@ -5,11 +5,11 @@ app=Flask(name)
 
 @app.route("/")
 def hello_world():
-    return render_template("pokeapi.co/api/v2/pokemon/mew")
+    return render_template("pokemon.html")
 
 @app.route("/Simon")
 def afficher_pokemon():
-    url=''
+    url='https://pokeapi.co/api/v2/pokemon/mew'
     reponse = requests.get(url)
     data=reponse.json
     return data
