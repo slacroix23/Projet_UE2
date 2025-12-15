@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["pyhton3", "API_exercice/main.py"]
+CMD ["python3", "API/API_exercice.py"]

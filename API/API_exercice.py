@@ -59,4 +59,4 @@ def afficher_catfacts() -> ReturnType:
 
 # Le serveur ne se lance que si le script est exécuté directement
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True, host='0.0.0.0')
