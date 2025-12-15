@@ -4,104 +4,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Lien vers le CSS externe -->
     <link rel="stylesheet" href="Fstyle.css">
     <title>Contact me</title>
 </head>
 
 <body>
-    <div>
-        <a href="http://localhost/projet_ue2/main/index.html">
-            <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
-        </a>    
-        </div>
 
-    <h1>Contact me</h1>
+<?php
+// ===== Connexion à la base de données =====
+try {
+    $pdo = new PDO(
+        'mysql:host=localhost;dbname=cyberfolio;charset=utf8mb4',
+        'root',
+        ''
+    );
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Mode erreurs exceptions
+} catch (PDOException $e) {
+    die("Erreur de connexion:" . $e->getMessage());
+}
 
-    <?php
-    $erreurs = [];
-    $succes = false;
+// ===== Récupération de la personne concernée =====
+// Si formulaire envoyé, on prend l'id depuis POST, sinon depuis GET (?id=2)
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $id_personne = isset($_POST['id_personne']) ? (int) $_POST['id_personne'] : 0;
+} else {
+    $id_personne = isset($_GET['id']) ? (int) $_GET['id'] : 0;
+}
 
-    // Traiter le formulaire s'il est soumis
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Récupérer et nettoyer les données
-        $nom = trim($_POST['nom'] ?? '');
-        $email = trim($_POST['email'] ?? '');
-        $entreprise = trim(string: $_POST['entreprise'] ?? '');
-        $contact = $_POST['contact'] ?? '';
-        $message = trim($_POST['message'] ?? '');
+// Préparation et exécution de la requête pour récupérer la personne
+$stmt = $pdo->prepare("SELECT * FROM nous WHERE id = :id");
+$stmt->execute(['id' => $id_personne]);
+$personne = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Validation
-        if (empty($nom)) {
-            $erreurs[] = "Name is required";
-        } elseif (strlen($nom) < 2) {
-            $erreurs[] = "Name is required";
-        }
+// Si aucune personne trouvée → arrêter le script
+if (!$personne) {
+    die("Personne introuvable.");
+}
 
-        if (empty($email)) {
-            $erreurs[] = "Email is required";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $erreurs[] = "Email is not valid";
-        }
+// ===== Variables pour le formulaire =====
+$erreurs = [];   // Tableau pour stocker les erreurs
+$succes = false; // Booléen pour savoir si le message a été envoyé
+$nom = $email = $entreprise = $message = "";
 
-        if (empty($entreprise)) {
-            $erreurs[] = "Company's name is require ";
-        } elseif (strlen(string: $entreprise) < 1) {
-            $erreurs[] = "Company's must be insterted";
-        }
+// ===== Traitement du formulaire =====
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupération et nettoyage des données du formulaire
+    $nom = trim($_POST['nom'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $entreprise = trim($_POST['entreprise'] ?? '');
+    $message = trim($_POST['message'] ?? '');
 
-        // Si pas d'erreurs, afficher le succès
-        if (empty($erreurs)) {
-            $succes = true;
-        }
+    // Validation des champs
+    if (empty($nom) || strlen($nom) < 2) {
+        $erreurs[] = "Name is required."; // Erreur si nom vide ou trop court
     }
 
-    // Afficher les erreurs
-    if (!empty($erreurs)) {
-        echo '<div class="erreur">';
-        echo '<h3>Erreurs :</h3>';
-        echo '<ul>';
-        foreach ($erreurs as $erreur) {
-            echo "<li>$erreur</li>";
-        }
-        echo '</ul>';
-        echo '</div>';
+    if (empty($email)) {
+        $erreurs[] = "Email is required."; // Erreur si email vide
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erreurs[] = "Email is not valid."; // Erreur si email invalide
     }
 
-    // Afficher le succès
-    if ($succes) {
-        echo '<div class="resultat">';
-        echo '<h2>✓ Message sent !</h2>';
-        echo "<p><strong>Name :</strong> " . htmlspecialchars($nom) . "</p>";
-        echo "<p><strong>Email :</strong> " . htmlspecialchars($email) . "</p>";
-        echo "<p><strong>Company :</strong> $entreprise </p>";
-        echo "<p><strong>You have sent to :$contact :</strong> $contact</p>";
-        if (!empty($message)) {
-            echo "<p><strong>Message :</strong> " . nl2br(htmlspecialchars($message)) . "</p>";
-        }
-        echo '</div>';
+    if (empty($entreprise)) {
+        $erreurs[] = "Company name is required."; // Erreur si entreprise vide
     }
-    ?>
 
-    <form method="POST" action="">
-        <label for="nom">Full name * :</label>
-        <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($nom ?? ''); ?>" required>
+    if (empty($message)) {
+        $erreurs[] = "Message is required."; // Erreur si message vide
+    }
 
-        <label for="email">Email * :</label>
-        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
+    // Si pas d'erreurs → insertion dans la base de données
+    if (empty($erreurs)) {
+        $sql = "INSERT INTO messages_contact (id_personne, nom, email, entreprise, message)
+                VALUES (:id_personne, :nom, :email, :entreprise, :message)";
+        $stmt_insert = $pdo->prepare($sql);
 
-        <label for="age">Company *:</label>
-        <input type="text" id="entreprise" name="entreprise" value="<?php echo htmlspecialchars($entreprise ?? ''); ?>"
-            required>
+        $stmt_insert->execute([
+            'id_personne' => $personne['id'],  // ID de la personne destinataire
+            'nom'         => $nom,             // Nom de l'expéditeur
+            'email'       => $email,           // Email de l'expéditeur
+            'entreprise'  => $entreprise,      // Entreprise de l'expéditeur
+            'message'     => $message,         // Message envoyé
+        ]);
 
-        <label for="message">Message * :</label>
-        <textarea id="message" name="message" rows="4"
-            requiredw><?php echo htmlspecialchars($message ?? ''); ?></textarea>
+        $succes = true; // Indiquer que le message a été envoyé
+    }
+}
+?>
 
-        <button type="submit">Send a message</button>
-    </form>
+<!-- Bouton retour vers l'index -->
+<div>
+    <a href="http://localhost/projet_ue2/main/index.html">
+        <img src="../image/flèche_retour.png" alt="bouton_retour" width="30">
+    </a>
+</div>
 
-    <p><small>* required field</small></p>
+<!-- Titre dynamique selon la personne sélectionnée -->
+<h1>Contact <?= htmlspecialchars($personne['nom']) ?></h1>
+
+<?php
+// ===== Affichage des erreurs =====
+if (!empty($erreurs)) {
+    echo '<div class="erreur">';
+    echo '<h3>Errors :</h3>';
+    echo '<ul>';
+    foreach ($erreurs as $erreur) {
+        echo "<li>$erreur</li>"; // Liste des erreurs
+    }
+    echo '</ul>';
+    echo '</div>';
+}
+
+// ===== Affichage du succès =====
+if ($succes) {
+    echo '<div class="resultat">';
+    echo '<h2>✓ Message sent successfully!</h2>';
+
+    // Destinataire du message
+    echo "<p><strong>Message sent to :</strong> " 
+        . htmlspecialchars($personne['nom']) 
+        . " (" . htmlspecialchars($personne['email']) . ")</p>";
+
+    // Expéditeur
+    echo "<p><strong>From :</strong> " 
+        . htmlspecialchars($nom) 
+        . " (" . htmlspecialchars($email) . ")</p>";
+
+    // Entreprise de l'expéditeur
+    echo "<p><strong>Company :</strong> " 
+        . htmlspecialchars($entreprise) . "</p>";
+
+    // Message envoyé
+    echo "<p><strong>Message :</strong><br>" 
+        . nl2br(htmlspecialchars($message)) . "</p>";
+
+    echo '</div>';
+}
+?>
+
+<!-- ===== Formulaire de contact ===== -->
+<form method="POST" action="">
+    <!-- ID caché de la personne pour le POST -->
+    <input type="hidden" name="id_personne" value="<?= htmlspecialchars($personne['id']) ?>">
+
+    <label for="nom">Full name * :</label>
+    <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($nom); ?>" required>
+
+    <label for="email">Email * :</label>
+    <input type="email" id="email" name="email" value="<?= htmlspecialchars($email); ?>" required>
+
+    <label for="entreprise">Company * :</label>
+    <input type="text" id="entreprise" name="entreprise" value="<?= htmlspecialchars($entreprise); ?>" required>
+
+    <label for="message">Message * :</label>
+    <textarea id="message" name="message" rows="4" required><?= htmlspecialchars($message); ?></textarea>
+
+    <!-- Bouton d'envoi -->
+    <button type="submit">Send a message</button>
+</form>
+
+<!-- Note pour les champs obligatoires -->
+<p><small>* required field</small></p>
 
 </body>
-
 </html>
+

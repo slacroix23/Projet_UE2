@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Informations sur Mew !</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Information sur Mew</h1>
+
+        <p id="Pokemon">Chargement des informations de Mew</p>
+    </div>
+
+    <script>
+        function fetchPokemon() {
+            const pokemonDiv=document.getElementById('Pokemon')
+            pokemonDiv.innerHTML='Chargement en cours ...';
+
+            fetch('/Simon')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erreur réseau ou réponse non valide ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const name = data.name.toUpperCase();
+                    const height = data.height /10;
+                    const weight = data.weight /10;
+                    
+                    const types = data.types.map(typeInfo => typeInfo.type.name.toUpperCase()).join(', ');
+
+                    const imagesUrl = data.sprites.front_default;
+
+                    const htmlContent=`
+                    <h2>${name}</h2>
+                    ${imagesUrl? `<img src="${imagesUrl}" alt="image de ${name}">` : ''}
+
+                    <ul>
+                        <li><strong>Type(s):</strong> ${types}</li>
+                        <li><strong>Hauteur:</strong> ${height}</li>
+                        <li><strong>Poids:</strong> ${weight}</li>
+                        <li><strong>ID Pokédex: </strong> ${data.id}</li>
+                    </ul>
+                `;
+                    
+                    pokemonDiv.innerHTML=htmlContent;
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération des informations:', error);
+                    pokemonDiv.innerHTML = `
+                        <p><strong>Erreur de chargement !</strong></p>
+                        <p>Impossible de récupérer les informations de Mew. Veuillez vérifier la console du navigateur.</p>
+                        <p style="color: red;">Détail de l'erreur: ${error.message}</p>
+                    `;
+                });
+        }
+
+        fetchPokemon();
+    </script>
+
+</body>
+
+</html>

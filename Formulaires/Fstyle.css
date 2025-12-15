@@ -1,21 +1,33 @@
 /* --------- Variables & reset --------- */
 :root {
+    /* Couleurs principales */
     --primary: #4f46e5;
     --primary-light: #6366f1;
     --primary-soft: #eef2ff;
     --danger: #dc2626;
     --success: #16a34a;
+    
+    /* Couleurs texte */
     --text-main: #111827;
     --text-muted: #6b7280;
+    
+    /* Couleurs de fond et bordure */
     --bg: #f3f4f6;
-    --white: #ffffff;
+    --white: #fff;
     --border: #e5e7eb;
+    
+    /* Rayons de bordure */
     --radius-lg: 14px;
     --radius-md: 10px;
+    
+    /* Ombre douce pour conteneurs */
     --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.12);
-    --transition: 0.18s ease-out;
+    
+    /* Transition globale pour effets */
+    --transition: .18s ease-out;
 }
 
+/* Reset global : marges/paddings et box-sizing */
 *,
 *::before,
 *::after {
@@ -26,202 +38,194 @@
 
 /* --------- Page globale --------- */
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: radial-gradient(circle at top left, #eef2ff 0, #f9fafb 40%, #e5e7eb 100%);
-    color: var(--text-main);
-    min-height: 100vh;
-    padding: 40px 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Typographie système */
+    background: radial-gradient(circle at top left,#eef2ff 0,#f9fafb 40%,#e5e7eb 100%); /* Dégradé doux */
+    color: var(--text-main); /* Couleur principale du texte */
+    min-height: 100vh; /* Corps prend toute la hauteur de l'écran */
+    padding: 40px 16px; /* Espacement interne */
 }
 
 /* --------- Titre --------- */
 h1 {
-    text-align: center;
-    font-size: 2.2rem;
-    letter-spacing: 0.03em;
-    margin-bottom: 10px;
-    color: #111827;
+    text-align: center; /* Centré */
+    font-size: 2.2rem; /* Taille du titre */
+    letter-spacing: .03em; /* Espacement des lettres */
+    margin-bottom: 14px; /* Marge sous le titre */
 }
 
 h1::after {
-    content: "";
+    content: ""; /* Élément décoratif */
     display: block;
-    margin: 10px auto 0;
     width: 60px;
     height: 3px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    margin: 10px auto 0; /* Centré sous le titre */
+    border-radius: 999px; /* Arrondi complet */
+    background: linear-gradient(90deg,var(--primary),var(--primary-light)); /* Dégradé */
 }
 
-/* --------- Conteneur général (formulaire + messages) --------- */
+/* --------- Conteneurs --------- */
 form,
 .erreur,
 .resultat {
-    max-width: 520px;
-    margin: 18px auto;
+    max-width: 520px; /* Largeur max */
+    margin: 18px auto; /* Centré horizontalement */
 }
 
-/* --------- Cartes (erreur / succès / formulaire) --------- */
+/* --------- Formulaire --------- */
 form {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(14px);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
-    padding: 26px 22px 24px;
-    border: 1px solid rgba(148, 163, 184, 0.25);
+    background: rgba(255,255,255,.92); /* Fond blanc légèrement transparent */
+    backdrop-filter: blur(14px); /* Effet flou glassmorphism */
+    border-radius: var(--radius-lg); /* Coins arrondis */
+    padding: 26px 22px 24px; /* Espacement interne */
+    box-shadow: var(--shadow-soft); /* Ombre douce */
+    border: 1px solid rgba(148,163,184,.25); /* Bordure légère */
 }
 
-/* --------- Labels & inputs --------- */
+/* --------- Labels & Inputs --------- */
 label {
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: var(--text-main);
+    display: block; /* Affichage en bloc */
+    font-weight: 600; /* Texte en gras */
+    font-size: .95rem; /* Taille du texte */
+    margin-bottom: 6px; /* Espacement sous le label */
 }
 
 label small {
-    font-weight: 500;
-    color: var(--text-muted);
+    font-weight: 500; /* Plus léger que label principal */
+    color: var(--text-muted); /* Couleur grise */
 }
 
-input[type="text"],
-input[type="email"],
+input,
 select,
 textarea {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    padding: 10px 12px;
-    font-size: 0.98rem;
-    font-family: inherit;
-    color: var(--text-main);
-    background-color: #f9fafb;
-    transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition), transform 0.1s ease-out;
-    margin-bottom: 16px;
+    width: 100%; /* Pleine largeur */
+    padding: 10px 12px; /* Espacement interne */
+    margin-bottom: 16px; /* Marge sous l'input */
+    border-radius: 10px; /* Coins arrondis */
+    border: 1px solid var(--border); /* Bordure grise */
+    background: #f9fafb; /* Fond clair */
+    color: var(--text-main); /* Texte sombre */
+    font: inherit; /* Police héritée */
+    font-size: .98rem;
+    transition: border-color var(--transition),
+                box-shadow var(--transition),
+                background-color var(--transition),
+                transform .1s ease-out; /* Transition douce pour focus/hover */
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
+input::placeholder,
 textarea::placeholder {
-    color: #9ca3af;
+    color: #9ca3af; /* Placeholder gris clair */
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
+input:focus,
 select:focus,
 textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    background-color: #ffffff;
-    box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.20);
-    transform: translateY(-1px);
+    outline: 0; /* Pas de contour par défaut */
+    background: #fff; /* Fond blanc */
+    border-color: var(--primary); /* Bordure principale */
+    transform: translateY(-1px); /* Légère translation pour effet visuel */
+    box-shadow: 0 0 0 1px rgba(79,70,229,.2); /* Ombre légère au focus */
 }
 
-select {
-    cursor: pointer;
-}
-
-/* --------- Zone de texte --------- */
 textarea {
-    resize: vertical;
-    min-height: 120px;
-    line-height: 1.4;
+    resize: vertical; /* Redimension verticale seulement */
+    min-height: 120px; /* Hauteur minimale */
 }
 
 /* --------- Bouton --------- */
 button[type="submit"] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 6px;
-    border-radius: 999px;
-    border: none;
+    width: 100%; /* Pleine largeur */
     padding: 11px 18px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px; /* Pill button */
+    cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0.03em;
-    cursor: pointer;
-    color: #ffffff;
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.35);
-    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.12s ease-out;
+    letter-spacing: .03em;
+    color: #fff;
+    background: linear-gradient(135deg,var(--primary),var(--primary-light));
+    box-shadow: 0 10px 25px rgba(79,70,229,.35);
+    transition: transform .12s ease-out,
+                filter .12s ease-out,
+                box-shadow .12s ease-out;
 }
 
 button[type="submit"]:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.05);
-    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.45);
+    transform: translateY(-1px); /* Légère translation */
+    filter: brightness(1.05); /* Luminosité accrue */
+    box-shadow: 0 15px 30px rgba(79,70,229,.45); /* Ombre plus prononcée */
 }
 
 button[type="submit"]:active {
-    transform: translateY(1px) scale(0.99);
-    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+    transform: translateY(1px) scale(.99); /* Effet clic */
+    box-shadow: 0 6px 16px rgba(79,70,229,.35); /* Ombre réduite */
 }
 
 /* --------- Messages d’erreur --------- */
-.erreur {
-    background: #fef2f2;
-    border: 1px solid rgba(248, 113, 113, 0.7);
-    color: #991b1b;
-    border-radius: var(--radius-md);
+.erreur,
+.resultat {
     padding: 14px 16px 12px;
-    font-size: 0.92rem;
+    border-radius: var(--radius-md);
+    font-size: .92rem;
+}
+
+.erreur {
+    background: #fef2f2; /* Fond rouge clair */
+    border: 1px solid rgba(248,113,113,.7); /* Bordure rouge */
+    color: #991b1b; /* Texte rouge sombre */
 }
 
 .erreur h3 {
     margin-bottom: 6px;
-    font-size: 0.96rem;
+    font-size: .96rem;
 }
 
 .erreur ul {
-    list-style: disc;
     margin-left: 18px;
+    list-style: disc;
 }
 
 .erreur li + li {
-    margin-top: 2px;
+    margin-top: 2px; /* Espacement entre éléments de la liste */
 }
 
 /* --------- Message de succès --------- */
 .resultat {
-    background: #ecfdf3;
-    border: 1px solid rgba(34, 197, 94, 0.7);
-    color: #14532d;
-    border-radius: var(--radius-md);
+    background: #ecfdf3; /* Fond vert clair */
+    border: 1px solid rgba(34,197,94,.7); /* Bordure verte */
+    color: #14532d; /* Texte vert sombre */
     padding: 16px 18px 14px;
-    font-size: 0.95rem;
 }
 
 .resultat h2 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 6px;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
 }
 
 .resultat p {
     margin-bottom: 4px;
 }
 
-/* --------- Champs obligatoires note --------- */
+/* --------- Note champs obligatoires --------- */
 p small {
     display: block;
     max-width: 520px;
     margin: 6px auto 0;
     text-align: left;
-    font-size: 0.8rem;
+    font-size: .8rem;
     color: var(--text-muted);
 }
 
 /* --------- Responsive --------- */
 @media (min-width: 640px) {
     body {
-        padding: 60px 24px;
+        padding: 60px 24px; /* Plus d’espace sur écran moyen+ */
     }
-
     form {
-        padding: 28px 26px 24px;
+        padding: 28px 26px 24px; /* Ajustement padding formulaire */
     }
 }
